@@ -73,6 +73,17 @@
     ]
   },
 
+  "amenities": {
+    "heading": "What you need, right on site.",
+    "items": [
+      { "name": "Free Wi-Fi", "body": "Stay connected while the machines do their thing." },
+      { "name": "Attendant on site", "body": "Staff here to help while you're there." },
+      { "name": "Coin changer", "body": "Change available on site." },
+      { "name": "Parking", "body": "Convenient parking at the store." },
+      { "name": "RV friendly", "body": "Room to pull in with an RV." }
+    ]
+  },
+
   "visit": {
     "heading": "Everything you need before you visit.",
     "intro": "Hours, location, phone, and directions are all easy to find from any device.",

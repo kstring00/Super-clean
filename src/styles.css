@@ -326,6 +326,29 @@ h2{
 }
 .service-card.sand .accent{background:rgba(13,23,40,.06)}
 
+.amenities{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:18px;
+}
+.amenity-card{
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:28px;
+  background:#fff;
+  box-shadow:0 18px 50px rgba(13,23,40,.06);
+}
+.amenity-card h3{
+  font-size:24px;
+  letter-spacing:-.03em;
+  margin-bottom:8px;
+}
+.amenity-card p{
+  color:var(--muted);
+  font-size:16px;
+  margin-bottom:0;
+}
+
 
 .why{
   background:
@@ -669,6 +692,7 @@ footer::after{
   .hero-copy{padding:40px 32px 24px;order:2}
   .hero-art{min-height:420px;order:1;padding:24px 24px 0}
   .services{grid-template-columns:1fr}
+  .amenities{grid-template-columns:1fr}
   .why-showcase{
   position:relative;
   z-index:1;grid-template-columns:1fr}

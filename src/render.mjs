@@ -113,6 +113,28 @@ ${c.services.cards.map((card) => serviceCard(c, card)).join("\n\n")}
 </section>`;
 }
 
+function amenities(c) {
+  const a = c.amenities;
+  return `<section class="section amenities-section" id="amenities">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>${esc(a.heading)}</h2>
+    </div>
+
+    <div class="amenities">
+${a.items
+  .map(
+    (item) => `      <div class="amenity-card">
+        <h3>${esc(item.name)}</h3>
+        <p>${esc(item.body)}</p>
+      </div>`
+  )
+  .join("\n")}
+    </div>
+  </div>
+</section>`;
+}
+
 function visit(c) {
   const b = c.business;
   return `<section class="section visit-priority" id="visit">
@@ -298,6 +320,8 @@ ${hero(c)}
 ${ticker(c)}
 
 ${services(c)}
+
+${amenities(c)}
 
 ${visit(c)}
 

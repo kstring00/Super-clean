@@ -175,6 +175,8 @@
   },
 
   "footer": {
-    "tagline": "Self-service laundry and wash & fold in Stafford, Texas."
+    "tagline": "Self-service laundry and wash & fold in Stafford, Texas.",
+    "_disclosureNote": "Required. Stays on the page until the business formally engages.",
+    "disclosure": "Independent concept design. Not affiliated with Super Clean Washateria."
   }
 }

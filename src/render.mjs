@@ -348,6 +348,9 @@ function footer(c) {
       <a href="#visit">Hours &amp; directions</a>
     </div>
   </div>
+  <div class="wrap">
+    <p class="foot-disclosure">${esc(c.footer.disclosure)}</p>
+  </div>
 </footer>`;
 }
 
@@ -414,8 +417,6 @@ export function renderPage(content, css) {
 ${head(c, css)}
 </head>
 <body>
-
-<div class="demo">Concept redesign — not affiliated with ${esc(c.business.name)}</div>
 
 ${header(c)}
 

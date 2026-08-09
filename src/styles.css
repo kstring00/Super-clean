@@ -273,204 +273,9 @@ h2{
 }
 .services{
   display:grid;
-  grid-template-columns:1.04fr .96fr;
+  grid-template-columns:1fr 1fr;
   gap:22px;
   align-items:stretch;
-}
-.service-visual{
-  position:relative;
-  min-height:520px;
-  border-radius:30px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.72);
-  background:linear-gradient(180deg, rgba(255,255,255,.54), rgba(255,255,255,.26));
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.72),
-    0 24px 60px rgba(13,23,40,.08);
-  backdrop-filter:blur(22px);
-}
-.service-visual::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 22% 18%, rgba(91,140,255,.14), transparent 28%),
-    radial-gradient(circle at 76% 22%, rgba(143,224,69,.10), transparent 24%),
-    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-  pointer-events:none;
-}
-.clean-stage{
-  position:absolute;
-  inset:0;
-  overflow:hidden;
-}
-.glass-orb{
-  position:absolute;
-  border-radius:50%;
-  background:radial-gradient(circle at 35% 30%, rgba(255,255,255,.82), rgba(255,255,255,.12) 58%, rgba(255,255,255,.04) 100%);
-  border:1px solid rgba(255,255,255,.45);
-  box-shadow:inset 0 0 20px rgba(255,255,255,.28);
-  opacity:.8;
-}
-.orb-a{width:180px;height:180px;left:-36px;top:38px;animation:floatOrb 9s ease-in-out infinite}
-.orb-b{width:118px;height:118px;right:28px;top:26px;animation:floatOrb 7s ease-in-out infinite reverse}
-.orb-c{width:140px;height:140px;right:-24px;bottom:86px;animation:floatOrb 10s ease-in-out infinite}
-.orb-d{width:78px;height:78px;left:56px;bottom:78px;animation:floatOrb 8s ease-in-out infinite reverse}
-.washer-unit{
-  position:absolute;
-  left:50%;
-  top:52%;
-  transform:translate(-50%,-50%);
-  width:320px;
-  height:320px;
-}
-.washer-body{
-  position:absolute;
-  inset:0;
-  border-radius:34px;
-  background:linear-gradient(180deg,#FFFFFF 0%, #EAF0F8 70%, #DDE7F4 100%);
-  border:1px solid #D7E1EE;
-  box-shadow:0 20px 50px rgba(13,23,40,.10);
-}
-.washer-panel{
-  position:absolute;
-  left:24px; right:24px; top:24px;
-  height:54px;
-  border-radius:18px;
-  background:linear-gradient(180deg,#F6F9FE 0%, #E8EEF8 100%);
-  border:1px solid #D7E1EE;
-}
-.washer-screen{
-  position:absolute;
-  left:18px; top:13px;
-  width:86px; height:28px;
-  border-radius:10px;
-  background:#0D1728;
-}
-.washer-progress{
-  position:absolute;
-  left:10px; top:11px;
-  width:12px; height:6px;
-  border-radius:999px;
-  background:#8FE045;
-  animation:progressRun 4s linear infinite;
-}
-.washer-knob{
-  position:absolute;
-  right:18px; top:9px;
-  width:34px; height:34px;
-  border-radius:50%;
-  background:#fff;
-  border:1px solid #D7E1EE;
-}
-.washer-door{
-  position:absolute;
-  left:50%;
-  bottom:28px;
-  transform:translateX(-50%);
-  width:208px;
-  height:208px;
-  border-radius:50%;
-  background:linear-gradient(180deg,#233B74 0%, #0C1427 100%);
-  box-shadow:inset 0 0 0 14px #E9EFF7, inset 0 0 0 26px #CFDAE9;
-  overflow:hidden;
-}
-.washer-water{
-  position:absolute;
-  left:-10%;
-  right:-10%;
-  bottom:26px;
-  height:72px;
-  background:linear-gradient(180deg, rgba(87,168,255,.52), rgba(31,75,238,.72));
-  border-radius:40px;
-  animation:slosh 3.2s ease-in-out infinite;
-}
-.clothes-spin{
-  position:absolute;
-  inset:18px;
-  animation:spinClothes 6s linear infinite;
-}
-.cloth{
-  position:absolute;
-  border-radius:18px;
-  box-shadow:0 10px 16px rgba(13,23,40,.12);
-}
-.cloth.one{width:58px;height:40px;background:#5B8CFF;left:74px;top:28px;transform:rotate(-18deg)}
-.cloth.two{width:64px;height:42px;background:#8FE045;right:34px;top:68px;transform:rotate(14deg)}
-.cloth.three{width:68px;height:44px;background:#FFD84D;left:42px;bottom:50px;transform:rotate(10deg)}
-.cloth.four{width:58px;height:38px;background:#FFFFFF;right:56px;bottom:28px;transform:rotate(-20deg)}
-.bubble{
-  position:absolute;
-  border-radius:50%;
-  background:radial-gradient(circle at 35% 30%, rgba(255,255,255,.95), rgba(255,255,255,.18) 68%, rgba(255,255,255,.05) 100%);
-  border:1px solid rgba(255,255,255,.52);
-  opacity:0;
-  animation:riseBubble linear infinite;
-}
-.b1{width:16px;height:16px;left:78px;bottom:86px;animation-duration:5.8s;animation-delay:-1s}
-.b2{width:24px;height:24px;left:136px;bottom:64px;animation-duration:7.2s;animation-delay:-2.6s}
-.b3{width:12px;height:12px;right:72px;bottom:70px;animation-duration:5.2s;animation-delay:-.8s}
-.b4{width:18px;height:18px;right:114px;bottom:56px;animation-duration:6.4s;animation-delay:-3.3s}
-.sparkle{
-  position:absolute;
-  width:18px; height:18px;
-  animation:twinkle 2.4s ease-in-out infinite;
-}
-.sparkle::before,.sparkle::after{
-  content:"";
-  position:absolute;
-  left:50%; top:50%;
-  transform:translate(-50%,-50%);
-  background:rgba(255,255,255,.88);
-  border-radius:999px;
-}
-.sparkle::before{width:2px;height:18px}
-.sparkle::after{width:18px;height:2px}
-.s1{left:54px;top:126px;animation-delay:-.8s}
-.s2{right:58px;top:122px;animation-delay:-1.4s}
-.s3{right:82px;bottom:92px;animation-delay:-.2s}
-.clean-pill{
-  position:absolute;
-  left:26px; top:22px;
-  z-index:2;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:10px 13px;
-  border-radius:999px;
-  background:rgba(255,255,255,.46);
-  border:1px solid rgba(255,255,255,.60);
-  backdrop-filter:blur(12px);
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:#2143A8;
-}
-.service-visual-copy{
-  position:absolute;
-  left:28px;
-  right:28px;
-  bottom:26px;
-  z-index:2;
-  color:#0D1728;
-}
-.service-visual-copy h3{
-  font-size:44px;
-  line-height:.95;
-  letter-spacing:-.05em;
-  margin-bottom:10px;
-}
-.service-visual-copy p{
-  max-width:34ch;
-  color:#43546D;
-  font-size:17px;
-  margin-bottom:0;
-}
-.service-options{
-  display:grid;
-  grid-template-rows:1fr 1fr;
-  gap:22px;
 }
 .service-card{
   position:relative;
@@ -520,32 +325,6 @@ h2{
   background:rgba(255,255,255,.10);
 }
 .service-card.sand .accent{background:rgba(13,23,40,.06)}
-@keyframes spinClothes{
-  from{transform:rotate(0deg)}
-  to{transform:rotate(360deg)}
-}
-@keyframes slosh{
-  0%,100%{transform:rotate(-4deg) translateY(0)}
-  50%{transform:rotate(4deg) translateY(-4px)}
-}
-@keyframes riseBubble{
-  0%{transform:translateY(0) scale(.9);opacity:0}
-  20%{opacity:.9}
-  100%{transform:translateY(-128px) scale(1.08);opacity:0}
-}
-@keyframes twinkle{
-  0%,100%{transform:scale(.7);opacity:.4}
-  50%{transform:scale(1);opacity:1}
-}
-@keyframes floatOrb{
-  0%,100%{transform:translateY(0) translateX(0)}
-  50%{transform:translateY(-10px) translateX(8px)}
-}
-@keyframes progressRun{
-  0%{width:12px}
-  50%{width:56px}
-  100%{width:12px}
-}
 
 
 .why{
@@ -914,10 +693,7 @@ footer::after{
   .hero-art{min-height:340px;padding:0 14px 22px}
   .hero-asset{width:min(380px,96%)}
   .section{padding:70px 0}
-  .service-visual-copy h3{font-size:32px}
-  .service-visual-copy p{font-size:15px}
   .service-card h3{font-size:32px}
-  .washer-unit{transform:translate(-50%,-50%) scale(.72)}
   .why-showcase-copy h3{font-size:28px}
   .perks{grid-template-columns:1fr}
   .photo-stack{grid-template-columns:1fr;grid-template-areas:"top" "left" "right"}
@@ -939,7 +715,7 @@ footer::after{
   .mobile a:last-child{background:var(--ink)}
 }
 @media(prefers-reduced-motion:reduce){
-  .marquee-track,.why-bg .bubble,.review-track,.clothes-spin,.washer-water,.bubble,.sparkle,.glass-orb,.washer-progress{animation:none}
+  .marquee-track,.why-bg .bubble,.review-track,.bubble{animation:none}
   html{scroll-behavior:auto}
   .why-bg .bubble,.bubble,.sparkle{opacity:.18}
 }

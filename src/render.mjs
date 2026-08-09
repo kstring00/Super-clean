@@ -89,13 +89,13 @@ function serviceCard(c, card) {
     card.ctaType === "phone" ? c.business.phoneHref : c.business.directionsUrl;
   const target =
     card.ctaType === "phone" ? "" : ' target="_blank" rel="noopener"';
-  return `        <article class="service-card ${attr(card.tone)}">
-          <div class="mini">${esc(card.mini)}</div>
-          <h3>${esc(card.heading)}</h3>
-          <p>${esc(card.body)}</p>
-          <div class="accent"></div>
-          <a class="btn" href="${attr(href)}"${target}>${esc(card.ctaLabel)}</a>
-        </article>`;
+  return `      <article class="service-card ${attr(card.tone)}">
+        <div class="mini">${esc(card.mini)}</div>
+        <h3>${esc(card.heading)}</h3>
+        <p>${esc(card.body)}</p>
+        <div class="accent"></div>
+        <a class="btn" href="${attr(href)}"${target}>${esc(card.ctaLabel)}</a>
+      </article>`;
 }
 
 function services(c) {
@@ -107,53 +107,7 @@ function services(c) {
     </div>
 
     <div class="services">
-      <div class="service-visual">
-        <div class="clean-stage" aria-hidden="true">
-          <span class="glass-orb orb-a"></span>
-          <span class="glass-orb orb-b"></span>
-          <span class="glass-orb orb-c"></span>
-          <span class="glass-orb orb-d"></span>
-
-          <span class="clean-pill">Fresh cycle</span>
-
-          <div class="washer-unit">
-            <div class="washer-body"></div>
-            <div class="washer-panel">
-              <div class="washer-screen">
-                <div class="washer-progress"></div>
-              </div>
-              <div class="washer-knob"></div>
-            </div>
-
-            <div class="washer-door">
-              <div class="clothes-spin">
-                <span class="cloth one"></span>
-                <span class="cloth two"></span>
-                <span class="cloth three"></span>
-                <span class="cloth four"></span>
-              </div>
-              <div class="washer-water"></div>
-              <span class="bubble b1"></span>
-              <span class="bubble b2"></span>
-              <span class="bubble b3"></span>
-              <span class="bubble b4"></span>
-            </div>
-          </div>
-
-          <span class="sparkle s1"></span>
-          <span class="sparkle s2"></span>
-          <span class="sparkle s3"></span>
-        </div>
-
-        <div class="service-visual-copy">
-          <h3>Fresh clothes.<br>Cleaner day.</h3>
-          <p>An animated clean-cycle visual makes this section feel active, polished, and more on-brand than a static photo here.</p>
-        </div>
-      </div>
-
-      <div class="service-options">
 ${c.services.cards.map((card) => serviceCard(c, card)).join("\n\n")}
-      </div>
     </div>
   </div>
 </section>`;

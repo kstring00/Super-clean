@@ -81,7 +81,7 @@
 
   "gallery": {
     "heading": "See the space before you arrive.",
-    "intro": "Real store photography can give customers confidence before they ever walk through the door.",
+    "intro": "Take a look inside before your first visit.",
     "main": {
       "image": "img/laundry-floor.png",
       "alt": "Interior view of Super Clean Washateria with large front-load washers and a bright open floor.",
@@ -110,7 +110,7 @@
     "score": "4.7",
     "count": "29 public reviews",
     "heading": "A strong local reputation.",
-    "intro": "A clear website helps turn online discovery into visits, calls, and drop-off inquiries.",
+    "intro": "Customers mention the space, the machines, and how easy the visit is.",
     "ctaLabel": "Read reviews",
     "ctaUrl": "https://www.google.com/maps/search/?api=1&query=Super+Clean+Washateria+802+Texas+Pkwy+Stafford+TX",
     "quotes": [

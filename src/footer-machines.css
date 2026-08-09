@@ -1,0 +1,91 @@
+/* Decorative footer machines only. Adds a washer on the left and dryer on the right
+   without changing footer content or layout. */
+
+.foot{
+  overflow:visible;
+  --machine-rise:0px;
+}
+
+.foot > *{
+  position:relative;
+  z-index:2;
+}
+
+.foot::before,
+.foot::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  width:190px;
+  height:245px;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+  pointer-events:none;
+  z-index:0;
+  opacity:.94;
+  will-change:transform,filter;
+  filter:drop-shadow(0 24px 30px rgba(0,0,0,.36)) drop-shadow(0 0 18px rgba(108,155,255,.16));
+}
+
+/* Front-load washer — left side. */
+.foot::before{
+  left:-178px;
+  transform:translate3d(0,calc(-50% + var(--machine-rise)),0) rotate(-2deg);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 280'%3E%3Cdefs%3E%3ClinearGradient id='b' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23f8fbff'/%3E%3Cstop offset='.52' stop-color='%23b9c5d5'/%3E%3Cstop offset='1' stop-color='%236d7a8d'/%3E%3C/linearGradient%3E%3CradialGradient id='g' cx='.35' cy='.3' r='.8'%3E%3Cstop stop-color='%2387b8ff' stop-opacity='.85'/%3E%3Cstop offset='.45' stop-color='%233c5d88' stop-opacity='.82'/%3E%3Cstop offset='1' stop-color='%230d1522'/%3E%3C/radialGradient%3E%3Cfilter id='glow'%3E%3CfeGaussianBlur stdDeviation='3' result='b'/%3E%3CfeMerge%3E%3CfeMergeNode in='b'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Crect x='22' y='12' width='176' height='252' rx='18' fill='url(%23b)' stroke='%23ffffff' stroke-opacity='.35' stroke-width='2'/%3E%3Crect x='36' y='28' width='148' height='48' rx='10' fill='%2328313f' stroke='%23ffffff' stroke-opacity='.18'/%3E%3Ccircle cx='57' cy='52' r='8' fill='%237da6ff' filter='url(%23glow)'/%3E%3Crect x='78' y='43' width='52' height='18' rx='6' fill='%23131720' stroke='%237da6ff' stroke-opacity='.55'/%3E%3Ccircle cx='159' cy='52' r='11' fill='%231c2532' stroke='%23dfe8f7' stroke-opacity='.55' stroke-width='2'/%3E%3Ccircle cx='110' cy='164' r='68' fill='%231a2230' stroke='%23eef4ff' stroke-opacity='.72' stroke-width='7'/%3E%3Ccircle cx='110' cy='164' r='54' fill='url(%23g)' stroke='%238ab2ff' stroke-opacity='.72' stroke-width='2'/%3E%3Cpath d='M73 166c20-22 40-25 77-5-14 20-33 32-57 29-10-1-17-8-20-24Z' fill='%23dbe8ff' fill-opacity='.20'/%3E%3Cpath d='M76 135c15-22 44-29 69-15' fill='none' stroke='%23ffffff' stroke-opacity='.42' stroke-width='6' stroke-linecap='round'/%3E%3Crect x='42' y='240' width='136' height='7' rx='3.5' fill='%23677689' fill-opacity='.7'/%3E%3C/svg%3E");
+}
+
+/* Matching dryer — right side. */
+.foot::after{
+  right:-178px;
+  transform:translate3d(0,calc(-50% - var(--machine-rise)),0) rotate(2deg);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 280'%3E%3Cdefs%3E%3ClinearGradient id='b' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23f8fbff'/%3E%3Cstop offset='.52' stop-color='%23c4cedb'/%3E%3Cstop offset='1' stop-color='%23758294'/%3E%3C/linearGradient%3E%3CradialGradient id='g' cx='.36' cy='.28' r='.82'%3E%3Cstop stop-color='%23ff9fe8' stop-opacity='.56'/%3E%3Cstop offset='.38' stop-color='%235d4d78' stop-opacity='.72'/%3E%3Cstop offset='1' stop-color='%23100f18'/%3E%3C/radialGradient%3E%3Cfilter id='glow'%3E%3CfeGaussianBlur stdDeviation='3' result='b'/%3E%3CfeMerge%3E%3CfeMergeNode in='b'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Crect x='22' y='12' width='176' height='252' rx='18' fill='url(%23b)' stroke='%23ffffff' stroke-opacity='.35' stroke-width='2'/%3E%3Crect x='36' y='28' width='148' height='48' rx='10' fill='%2328313f' stroke='%23ffffff' stroke-opacity='.18'/%3E%3Ccircle cx='57' cy='52' r='8' fill='%23ff79df' filter='url(%23glow)'/%3E%3Crect x='78' y='43' width='52' height='18' rx='6' fill='%23131720' stroke='%23ff79df' stroke-opacity='.45'/%3E%3Ccircle cx='159' cy='52' r='11' fill='%231c2532' stroke='%23dfe8f7' stroke-opacity='.55' stroke-width='2'/%3E%3Ccircle cx='110' cy='164' r='68' fill='%231a2230' stroke='%23eef4ff' stroke-opacity='.72' stroke-width='7'/%3E%3Ccircle cx='110' cy='164' r='54' fill='url(%23g)' stroke='%23ff9fe8' stroke-opacity='.48' stroke-width='2'/%3E%3Cpath d='M70 166c20-25 47-29 80-6-14 21-35 33-59 29-11-2-18-9-21-23Z' fill='%23ffe0f7' fill-opacity='.16'/%3E%3Cpath d='M76 135c15-22 44-29 69-15' fill='none' stroke='%23ffffff' stroke-opacity='.42' stroke-width='6' stroke-linecap='round'/%3E%3Crect x='42' y='240' width='136' height='7' rx='3.5' fill='%23677689' fill-opacity='.7'/%3E%3C/svg%3E");
+}
+
+/* Gentle motion by default. */
+@media (prefers-reduced-motion:no-preference){
+  .foot::before{animation:footerWasherFloat 5.4s ease-in-out infinite alternate}
+  .foot::after{animation:footerDryerFloat 6.2s ease-in-out infinite alternate}
+}
+
+@keyframes footerWasherFloat{
+  from{translate:0 -5px;rotate:-.5deg}
+  to{translate:0 7px;rotate:.7deg}
+}
+@keyframes footerDryerFloat{
+  from{translate:0 6px;rotate:.6deg}
+  to{translate:0 -6px;rotate:-.6deg}
+}
+
+/* Bonus: scroll-linked counter motion in browsers that support CSS scroll timelines. */
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .foot::before,
+    .foot::after{
+      animation-timeline:view(block);
+      animation-range:entry 0% cover 100%;
+      animation-iteration-count:1;
+      animation-fill-mode:both;
+      animation-timing-function:linear;
+    }
+    .foot::before{animation-name:footerWasherScroll}
+    .foot::after{animation-name:footerDryerScroll}
+  }
+  @keyframes footerWasherScroll{
+    from{translate:0 56px;rotate:-4deg}
+    to{translate:0 -42px;rotate:2deg}
+  }
+  @keyframes footerDryerScroll{
+    from{translate:0 -48px;rotate:4deg}
+    to{translate:0 46px;rotate:-2deg}
+  }
+}
+
+@media(max-width:1450px){
+  .foot::before{left:-125px;width:150px;height:205px;opacity:.78}
+  .foot::after{right:-125px;width:150px;height:205px;opacity:.78}
+}
+
+@media(max-width:1180px){
+  .foot::before,.foot::after{display:none}
+}

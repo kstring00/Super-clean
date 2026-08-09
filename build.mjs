@@ -25,7 +25,7 @@ try {
 }
 const css = [
   readFileSync(join(root, "src", "styles.css"), "utf8"),
-  readFileSync(join(root, "src", "hero-bubbles.css"), "utf8"),
+  readFileSync(join(root, "src", "service-visual.css"), "utf8"),
   readFileSync(join(root, "src", "footer-machines.css"), "utf8"),
   readFileSync(join(root, "src", "coin-cta.css"), "utf8"),
   readFileSync(join(root, "src", "section-blend.css"), "utf8"),
@@ -42,8 +42,6 @@ writeFileSync(join(dist, "index.html"), html, "utf8");
 
 console.log(`built dist/index.html (${(html.length / 1024).toFixed(1)} kB)`);
 
-// Facts nobody has confirmed yet. These render as nothing until they are set,
-// so the build lists them rather than letting them go quietly missing.
 const unconfirmed = [
   ["pricing.selfService", content.pricing?.selfService],
   ["pricing.washAndFold", content.pricing?.washAndFold],

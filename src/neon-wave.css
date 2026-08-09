@@ -1,9 +1,9 @@
-/* Bright neon wave divider between the amenities block and the next section.
-   Purely decorative: no layout/content changes elsewhere. */
+/* Detergent-pod inspired wave divider between the amenities block and the next section.
+   Softer glow, more fluid motion, deeper cobalt + teal palette. */
 #amenities{
   position:relative;
   z-index:1;
-  padding-bottom:150px;
+  padding-bottom:168px;
   overflow:visible;
 }
 
@@ -11,51 +11,42 @@
   content:"";
   position:absolute;
   left:50%;
-  bottom:-16px;
-  width:110vw;
-  height:150px;
+  bottom:-24px;
+  width:112vw;
+  height:178px;
   transform:translateX(-50%);
   pointer-events:none;
   z-index:5;
   background-repeat:no-repeat;
   background-position:center;
   background-size:100% 100%;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 180' preserveAspectRatio='none'%3E%3Cdefs%3E%3Cfilter id='g' x='-30%25' y='-100%25' width='160%25' height='300%25'%3E%3CfeGaussianBlur stdDeviation='10' result='b'/%3E%3CfeMerge%3E%3CfeMergeNode in='b'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3ClinearGradient id='n' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%2300f7ff'/%3E%3Cstop offset='.48' stop-color='%2347b8ff'/%3E%3Cstop offset='.72' stop-color='%238b5cff'/%3E%3Cstop offset='1' stop-color='%2300f7ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M-40 92 C90 20 180 24 300 88 S520 158 650 82 S900 22 1030 96 S1260 156 1390 78 S1540 38 1640 92' fill='none' stroke='%2300eaff' stroke-opacity='.24' stroke-width='34' filter='url(%23g)'/%3E%3Cpath d='M-40 92 C90 20 180 24 300 88 S520 158 650 82 S900 22 1030 96 S1260 156 1390 78 S1540 38 1640 92' fill='none' stroke='url(%23n)' stroke-width='10' stroke-linecap='round' filter='url(%23g)'/%3E%3Cpath d='M-40 92 C90 20 180 24 300 88 S520 158 650 82 S900 22 1030 96 S1260 156 1390 78 S1540 38 1640 92' fill='none' stroke='%23e9ffff' stroke-opacity='.92' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 210' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='deep' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23271c8d'/%3E%3Cstop offset='.18' stop-color='%233b2bb6'/%3E%3Cstop offset='.48' stop-color='%231c4fba'/%3E%3Cstop offset='.78' stop-color='%232e2399'/%3E%3Cstop offset='1' stop-color='%23172782'/%3E%3C/linearGradient%3E%3ClinearGradient id='teal' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%230a6e66'/%3E%3Cstop offset='.26' stop-color='%230a8f82'/%3E%3Cstop offset='.55' stop-color='%23116f79'/%3E%3Cstop offset='.82' stop-color='%230a8c73'/%3E%3Cstop offset='1' stop-color='%23085f63'/%3E%3C/linearGradient%3E%3ClinearGradient id='foam' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23ffffff' stop-opacity='.88'/%3E%3Cstop offset='.45' stop-color='%23eaf9f6' stop-opacity='.72'/%3E%3Cstop offset='1' stop-color='%23ffffff' stop-opacity='.9'/%3E%3C/linearGradient%3E%3Cfilter id='soft' x='-20%25' y='-100%25' width='140%25' height='300%25'%3E%3CfeGaussianBlur stdDeviation='5'/%3E%3C/filter%3E%3C/defs%3E%3Cpath d='M-70 118 C45 22 135 18 250 101 S456 183 573 83 S789 12 905 106 S1112 194 1230 88 S1470 16 1680 112' fill='none' stroke='%23142e70' stroke-opacity='.14' stroke-width='62' filter='url(%23soft)'/%3E%3Cpath d='M-70 118 C45 22 135 18 250 101 S456 183 573 83 S789 12 905 106 S1112 194 1230 88 S1470 16 1680 112' fill='none' stroke='url(%23deep)' stroke-width='34' stroke-linecap='round'/%3E%3Cpath d='M-90 101 C38 184 150 184 270 91 S493 14 612 108 S824 190 948 92 S1173 18 1294 105 S1500 180 1690 78' fill='none' stroke='url(%23teal)' stroke-width='28' stroke-linecap='round'/%3E%3Cpath d='M-70 118 C45 22 135 18 250 101 S456 183 573 83 S789 12 905 106 S1112 194 1230 88 S1470 16 1680 112' fill='none' stroke='url(%23foam)' stroke-opacity='.52' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M-90 101 C38 184 150 184 270 91 S493 14 612 108 S824 190 948 92 S1173 18 1294 105 S1500 180 1690 78' fill='none' stroke='%23ffffff' stroke-opacity='.28' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");
   filter:
-    drop-shadow(0 0 4px rgba(0,247,255,.95))
-    drop-shadow(0 0 11px rgba(0,217,255,.82))
-    drop-shadow(0 0 24px rgba(107,92,255,.62));
-  animation:neonWaveFlicker 5.6s infinite, neonWaveFloat 8s ease-in-out infinite alternate;
-  will-change:opacity,filter,transform;
+    drop-shadow(0 7px 12px rgba(15,35,83,.18))
+    drop-shadow(0 0 8px rgba(12,118,115,.16));
+  animation:detergentWaveFloat 7.5s ease-in-out infinite alternate, detergentWaveShimmer 6.8s ease-in-out infinite;
+  will-change:transform,filter,opacity;
 }
 
-@keyframes neonWaveFloat{
-  from{transform:translateX(-50%) translateY(3px) scaleX(1.01)}
-  to{transform:translateX(-50%) translateY(-5px) scaleX(1.025)}
+@keyframes detergentWaveFloat{
+  from{transform:translateX(-50%) translateY(5px) scaleX(1.015)}
+  to{transform:translateX(-50%) translateY(-8px) scaleX(1.035)}
 }
 
-/* Mostly steady neon with a few quick, realistic tube flickers. */
-@keyframes neonWaveFlicker{
-  0%,18%,22%,24%,53%,57%,100%{opacity:1}
-  19%{opacity:.78}
-  20%{opacity:.96}
-  21%{opacity:.64}
-  23%{opacity:.9}
-  54%{opacity:.72}
-  55%{opacity:1}
-  56%{opacity:.84}
+@keyframes detergentWaveShimmer{
+  0%,100%{filter:drop-shadow(0 7px 12px rgba(15,35,83,.18)) drop-shadow(0 0 8px rgba(12,118,115,.16));opacity:.96}
+  50%{filter:drop-shadow(0 9px 16px rgba(15,35,83,.22)) drop-shadow(0 0 11px rgba(33,137,129,.2));opacity:1}
 }
 
 @media(max-width:700px){
-  #amenities{padding-bottom:110px}
+  #amenities{padding-bottom:122px}
   #amenities::after{
-    width:150vw;
-    height:112px;
-    bottom:-8px;
+    width:152vw;
+    height:126px;
+    bottom:-12px;
     filter:
-      drop-shadow(0 0 3px rgba(0,247,255,.9))
-      drop-shadow(0 0 9px rgba(0,217,255,.72))
-      drop-shadow(0 0 18px rgba(107,92,255,.5));
+      drop-shadow(0 5px 9px rgba(15,35,83,.16))
+      drop-shadow(0 0 6px rgba(12,118,115,.13));
   }
 }
 

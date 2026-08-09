@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Build: content.json + src/styles.css + src/hero-bubbles.css + src/neon-wave.css + src/render.mjs  ->  dist/
+// Build: content.json + src/styles.css + decorative CSS + src/render.mjs  ->  dist/
 // Zero dependencies. Run with `npm run build`.
 
 import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync } from "node:fs";
@@ -27,6 +27,7 @@ const css = [
   readFileSync(join(root, "src", "styles.css"), "utf8"),
   readFileSync(join(root, "src", "hero-bubbles.css"), "utf8"),
   readFileSync(join(root, "src", "neon-wave.css"), "utf8"),
+  readFileSync(join(root, "src", "footer-machines.css"), "utf8"),
 ].join("\n\n");
 
 rmSync(dist, { recursive: true, force: true });

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Build: content.json + src/styles.css + src/render.mjs  ->  dist/
+// Build: content.json + src/styles.css + src/hero-bubbles.css + src/render.mjs  ->  dist/
 // Zero dependencies. Run with `npm run build`.
 
 import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync } from "node:fs";
@@ -23,7 +23,10 @@ try {
   );
   process.exit(1);
 }
-const css = readFileSync(join(root, "src", "styles.css"), "utf8");
+const css = [
+  readFileSync(join(root, "src", "styles.css"), "utf8"),
+  readFileSync(join(root, "src", "hero-bubbles.css"), "utf8"),
+].join("\n\n");
 
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });

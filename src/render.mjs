@@ -135,6 +135,29 @@ ${a.items
 </section>`;
 }
 
+// 24-hour number -> "7:00 AM". Must stay in step with fmt() in the client
+// script below, which re-uses the same content values.
+function formatHour(h) {
+  const hour = Math.floor(h);
+  const minutes = Math.round((h - hour) * 60);
+  const meridiem = hour >= 12 ? "PM" : "AM";
+  const mm = String(minutes).padStart(2, "0");
+  return `${hour % 12 || 12}:${mm} ${meridiem}`;
+}
+
+// Rendered at build time so the hours are in the served HTML, not injected by
+// script. The client only adds the "today" highlight on top of this.
+function hoursRows(c) {
+  return c.hours.days
+    .map(
+      (d, i) => `          <div class="hr-row" data-day="${i}">
+            <span>${esc(d.day)}<span class="hr-today" hidden> · Today</span></span>
+            <strong>${esc(formatHour(d.open))} – ${esc(formatHour(d.close))}</strong>
+          </div>`
+    )
+    .join("\n");
+}
+
 function visit(c) {
   const b = c.business;
   return `<section class="section visit-priority" id="visit">
@@ -148,7 +171,13 @@ function visit(c) {
       <div class="hours">
         <h3 style="font-size:32px">${esc(c.visit.hoursHeading)}</h3>
         <p style="color:var(--muted)">${esc(b.addressLine1)}<br>${esc(b.addressLine2)}<br><a href="${attr(b.phoneHref)}">${esc(b.phoneDisplay)}</a></p>
-        <div class="hours-list" id="hoursList"></div>
+        <!-- TODO_CONFIRM_WITH_OWNER: opening hours below are UNVERIFIED reference
+             values taken from a third-party directory listing, not from the owner.
+             Confirm in person, then correct content.json > hours.days and set
+             hours.verified to true. -->
+        <div class="hours-list" id="hoursList">
+${hoursRows(c)}
+        </div>
       </div>
       <div class="map-card">
         <iframe title="Map to ${attr(b.name)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="${attr(b.mapEmbedUrl)}"></iframe>
@@ -269,34 +298,47 @@ function script(c) {
   const hours = c.hours.days.map((d) => ({ open: d.open, close: d.close }));
   const days = c.hours.days.map((d) => d.day);
   return `<script>
-const HOURS=${JSON.stringify(hours)};
-const DAYS=${JSON.stringify(days)};
+// Progressive enhancement only. The hours table is already in the HTML; this
+// adds the open/closed pill and highlights whichever row is today on the
+// visitor's own clock.
+(function(){
+  var HOURS=${JSON.stringify(hours)};
+  var DAYS=${JSON.stringify(days)};
 
-function fmt(h){
-  const mer=h>=12?"PM":"AM";
-  return \`\${h%12||12}:00 \${mer}\`;
-}
-
-function update(){
-  const now=new Date(),d=now.getDay(),t=now.getHours()+now.getMinutes()/60,span=HOURS[d];
-  let text;
-  if(t<span.open) text=\`Closed · opens \${fmt(span.open)}\`;
-  else if(t<span.close) text=\`Open now · until \${fmt(span.close)}\`;
-  else {
-    const nd=(d+1)%7;
-    text=\`Closed · opens \${fmt(HOURS[nd].open)} \${DAYS[nd]}\`;
+  function fmt(h){
+    var hour=Math.floor(h);
+    var mm=String(Math.round((h-hour)*60)).padStart(2,"0");
+    return (hour%12||12)+":"+mm+" "+(hour>=12?"PM":"AM");
   }
-  document.getElementById("heroStatus").textContent=text;
 
-  document.getElementById("hoursList").innerHTML=HOURS.map((s,i)=>\`
-    <div class="hr-row \${i===d?"today":""}">
-      <span>\${DAYS[i]}\${i===d?" · Today":""}</span>
-      <strong>\${fmt(s.open)} – \${fmt(s.close)}</strong>
-    </div>
-  \`).join("");
-}
-update();
-setInterval(update,60000);
+  function update(){
+    var now=new Date();
+    var d=now.getDay();
+    var t=now.getHours()+now.getMinutes()/60;
+    var span=HOURS[d];
+
+    var status=document.getElementById("heroStatus");
+    if(status&&span){
+      if(t<span.open) status.textContent="Closed · opens "+fmt(span.open);
+      else if(t<span.close) status.textContent="Open now · until "+fmt(span.close);
+      else {
+        var nd=(d+1)%7;
+        status.textContent="Closed · opens "+fmt(HOURS[nd].open)+" "+DAYS[nd];
+      }
+    }
+
+    var rows=document.querySelectorAll("#hoursList .hr-row");
+    for(var i=0;i<rows.length;i++){
+      var isToday=Number(rows[i].getAttribute("data-day"))===d;
+      rows[i].classList.toggle("today",isToday);
+      var tag=rows[i].querySelector(".hr-today");
+      if(tag) tag.hidden=!isToday;
+    }
+  }
+
+  update();
+  setInterval(update,60000);
+})();
 <\/script>`;
 }
 

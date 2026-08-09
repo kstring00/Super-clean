@@ -406,6 +406,31 @@ function script(c) {
   update();
   setInterval(update,60000);
 
+  var hero=document.querySelector(".hero");
+  if(hero&&window.matchMedia("(pointer:fine)").matches){
+    var tx=0,ty=0,cx=0,cy=0,raf=0;
+    function draw(){
+      cx+=(tx-cx)*.12;
+      cy+=(ty-cy)*.12;
+      hero.style.setProperty("--bubble-x",cx.toFixed(2)+"px");
+      hero.style.setProperty("--bubble-y",cy.toFixed(2)+"px");
+      if(Math.abs(tx-cx)>.15||Math.abs(ty-cy)>.15) raf=requestAnimationFrame(draw);
+      else raf=0;
+    }
+    hero.addEventListener("pointermove",function(e){
+      var r=hero.getBoundingClientRect();
+      var nx=(e.clientX-r.left)/r.width-.5;
+      var ny=(e.clientY-r.top)/r.height-.5;
+      tx=nx*42;
+      ty=ny*30;
+      if(!raf) raf=requestAnimationFrame(draw);
+    });
+    hero.addEventListener("pointerleave",function(){
+      tx=0;ty=0;
+      if(!raf) raf=requestAnimationFrame(draw);
+    });
+  }
+
   // The map is a cross-origin iframe. Tabbing to it makes it activeElement but
   // Chromium fires no focus event on it and it matches none of :focus,
   // :focus-visible or :focus-within, so no selector reaches it. Check

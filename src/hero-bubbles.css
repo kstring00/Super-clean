@@ -1,4 +1,4 @@
-/* Hero atmosphere: blue wash + subtle floating soap bubbles.
+/* Hero atmosphere: blue wash + premium floating soap bubbles.
    This only decorates the space around the existing hero card. */
 .hero{
   position:relative;
@@ -7,7 +7,7 @@
   --bubble-x:0px;
   --bubble-y:0px;
   background:
-    radial-gradient(circle at 50% 24%, rgba(255,255,255,.22), transparent 34%),
+    radial-gradient(circle at 50% 24%, rgba(255,255,255,.24), transparent 34%),
     linear-gradient(180deg,#C5D9EE 0%,#AFCBE6 52%,#B9D1E8 100%);
 }
 
@@ -25,47 +25,64 @@
   pointer-events:none;
   background-repeat:no-repeat;
   will-change:transform,opacity;
+  filter:drop-shadow(0 6px 10px rgba(44,93,142,.08));
 }
 
-/* Larger, slower bubbles. Each radial gradient is a transparent CSS bubble,
-   so there are no added image assets. */
+/* Larger glassy bubbles with crisp rims, soft inner glow and tiny highlights. */
 .hero::before{
-  opacity:.62;
+  opacity:.82;
   background-image:
-    radial-gradient(circle at 8% 75%, transparent 0 32px, rgba(255,255,255,.34) 33px 35px, rgba(255,255,255,.08) 36px 42px, transparent 43px),
-    radial-gradient(circle at 14% 24%, transparent 0 24px, rgba(255,255,255,.34) 25px 27px, rgba(255,255,255,.08) 28px 33px, transparent 34px),
-    radial-gradient(circle at 91% 20%, transparent 0 34px, rgba(255,255,255,.36) 35px 37px, rgba(255,255,255,.08) 38px 44px, transparent 45px),
-    radial-gradient(circle at 88% 77%, transparent 0 28px, rgba(255,255,255,.32) 29px 31px, rgba(255,255,255,.07) 32px 38px, transparent 39px),
-    radial-gradient(circle at 4% 38%, transparent 0 13px, rgba(255,255,255,.30) 14px 15px, rgba(255,255,255,.07) 16px 19px, transparent 20px),
-    radial-gradient(circle at 96% 48%, transparent 0 15px, rgba(255,255,255,.30) 16px 17px, rgba(255,255,255,.07) 18px 21px, transparent 22px);
-  animation:heroBubbleDriftA 12s ease-in-out infinite alternate;
+    radial-gradient(circle at 6% 72%, rgba(255,255,255,.82) 0 2px, transparent 3px 27px, rgba(255,255,255,.68) 28px 30px, rgba(111,165,216,.17) 31px 34px, rgba(255,255,255,.14) 35px 39px, transparent 40px),
+    radial-gradient(circle at 12% 21%, rgba(255,255,255,.78) 0 2px, transparent 3px 19px, rgba(255,255,255,.66) 20px 22px, rgba(111,165,216,.16) 23px 26px, rgba(255,255,255,.12) 27px 30px, transparent 31px),
+    radial-gradient(circle at 18% 48%, rgba(255,255,255,.72) 0 1px, transparent 2px 13px, rgba(255,255,255,.58) 14px 16px, rgba(111,165,216,.13) 17px 19px, transparent 20px),
+    radial-gradient(circle at 21% 82%, rgba(255,255,255,.74) 0 2px, transparent 3px 22px, rgba(255,255,255,.62) 23px 25px, rgba(111,165,216,.15) 26px 29px, transparent 30px),
+    radial-gradient(circle at 31% 13%, rgba(255,255,255,.70) 0 1px, transparent 2px 11px, rgba(255,255,255,.56) 12px 14px, rgba(111,165,216,.12) 15px 17px, transparent 18px),
+    radial-gradient(circle at 72% 16%, rgba(255,255,255,.72) 0 2px, transparent 3px 24px, rgba(255,255,255,.64) 25px 27px, rgba(111,165,216,.16) 28px 31px, transparent 32px),
+    radial-gradient(circle at 82% 34%, rgba(255,255,255,.74) 0 1px, transparent 2px 16px, rgba(255,255,255,.60) 17px 19px, rgba(111,165,216,.14) 20px 22px, transparent 23px),
+    radial-gradient(circle at 91% 18%, rgba(255,255,255,.84) 0 2px, transparent 3px 29px, rgba(255,255,255,.70) 30px 32px, rgba(111,165,216,.18) 33px 36px, rgba(255,255,255,.13) 37px 40px, transparent 41px),
+    radial-gradient(circle at 89% 73%, rgba(255,255,255,.78) 0 2px, transparent 3px 23px, rgba(255,255,255,.66) 24px 26px, rgba(111,165,216,.16) 27px 30px, transparent 31px),
+    radial-gradient(circle at 96% 49%, rgba(255,255,255,.72) 0 1px, transparent 2px 12px, rgba(255,255,255,.57) 13px 15px, rgba(111,165,216,.13) 16px 18px, transparent 19px),
+    radial-gradient(circle at 77% 87%, rgba(255,255,255,.72) 0 1px, transparent 2px 15px, rgba(255,255,255,.58) 16px 18px, rgba(111,165,216,.13) 19px 21px, transparent 22px),
+    radial-gradient(circle at 4% 37%, rgba(255,255,255,.72) 0 1px, transparent 2px 10px, rgba(255,255,255,.56) 11px 13px, rgba(111,165,216,.12) 14px 16px, transparent 17px);
+  animation:heroBubbleDriftA 13s ease-in-out infinite alternate;
 }
 
-/* Smaller bubbles move on a different rhythm so the background feels alive
-   without becoming distracting. */
+/* Smaller bubbles create depth and a denser field without overwhelming the hero. */
 .hero::after{
-  opacity:.45;
+  opacity:.68;
   background-image:
-    radial-gradient(circle at 18% 84%, transparent 0 9px, rgba(255,255,255,.45) 10px 11px, transparent 12px),
-    radial-gradient(circle at 23% 35%, transparent 0 7px, rgba(255,255,255,.42) 8px 9px, transparent 10px),
-    radial-gradient(circle at 78% 14%, transparent 0 8px, rgba(255,255,255,.40) 9px 10px, transparent 11px),
-    radial-gradient(circle at 82% 88%, transparent 0 11px, rgba(255,255,255,.42) 12px 13px, transparent 14px),
-    radial-gradient(circle at 94% 62%, transparent 0 6px, rgba(255,255,255,.40) 7px 8px, transparent 9px),
-    radial-gradient(circle at 6% 58%, transparent 0 7px, rgba(255,255,255,.40) 8px 9px, transparent 10px);
-  animation:heroBubbleDriftB 8s ease-in-out infinite alternate;
+    radial-gradient(circle at 8% 88%, rgba(255,255,255,.78) 0 1px, transparent 2px 7px, rgba(255,255,255,.62) 8px 9px, rgba(112,165,216,.12) 10px 11px, transparent 12px),
+    radial-gradient(circle at 15% 58%, rgba(255,255,255,.74) 0 1px, transparent 2px 5px, rgba(255,255,255,.58) 6px 7px, transparent 8px),
+    radial-gradient(circle at 22% 34%, rgba(255,255,255,.74) 0 1px, transparent 2px 6px, rgba(255,255,255,.60) 7px 8px, transparent 9px),
+    radial-gradient(circle at 28% 73%, rgba(255,255,255,.72) 0 1px, transparent 2px 8px, rgba(255,255,255,.58) 9px 10px, transparent 11px),
+    radial-gradient(circle at 36% 22%, rgba(255,255,255,.70) 0 1px, transparent 2px 4px, rgba(255,255,255,.56) 5px 6px, transparent 7px),
+    radial-gradient(circle at 44% 89%, rgba(255,255,255,.72) 0 1px, transparent 2px 6px, rgba(255,255,255,.58) 7px 8px, transparent 9px),
+    radial-gradient(circle at 57% 11%, rgba(255,255,255,.72) 0 1px, transparent 2px 5px, rgba(255,255,255,.58) 6px 7px, transparent 8px),
+    radial-gradient(circle at 64% 77%, rgba(255,255,255,.74) 0 1px, transparent 2px 7px, rgba(255,255,255,.60) 8px 9px, transparent 10px),
+    radial-gradient(circle at 72% 43%, rgba(255,255,255,.70) 0 1px, transparent 2px 4px, rgba(255,255,255,.56) 5px 6px, transparent 7px),
+    radial-gradient(circle at 79% 13%, rgba(255,255,255,.74) 0 1px, transparent 2px 6px, rgba(255,255,255,.60) 7px 8px, transparent 9px),
+    radial-gradient(circle at 84% 86%, rgba(255,255,255,.76) 0 1px, transparent 2px 9px, rgba(255,255,255,.61) 10px 11px, transparent 12px),
+    radial-gradient(circle at 91% 59%, rgba(255,255,255,.72) 0 1px, transparent 2px 5px, rgba(255,255,255,.58) 6px 7px, transparent 8px),
+    radial-gradient(circle at 97% 32%, rgba(255,255,255,.70) 0 1px, transparent 2px 4px, rgba(255,255,255,.56) 5px 6px, transparent 7px),
+    radial-gradient(circle at 3% 54%, rgba(255,255,255,.74) 0 1px, transparent 2px 6px, rgba(255,255,255,.60) 7px 8px, transparent 9px),
+    radial-gradient(circle at 11% 12%, rgba(255,255,255,.70) 0 1px, transparent 2px 4px, rgba(255,255,255,.56) 5px 6px, transparent 7px),
+    radial-gradient(circle at 26% 9%, rgba(255,255,255,.72) 0 1px, transparent 2px 5px, rgba(255,255,255,.58) 6px 7px, transparent 8px),
+    radial-gradient(circle at 69% 93%, rgba(255,255,255,.72) 0 1px, transparent 2px 6px, rgba(255,255,255,.58) 7px 8px, transparent 9px),
+    radial-gradient(circle at 94% 91%, rgba(255,255,255,.70) 0 1px, transparent 2px 4px, rgba(255,255,255,.56) 5px 6px, transparent 7px);
+  animation:heroBubbleDriftB 8.5s ease-in-out infinite alternate;
 }
 
 @keyframes heroBubbleDriftA{
-  from{transform:translate3d(calc(var(--bubble-x) * .45),calc(var(--bubble-y) * .45 + 18px),0) scale(.98)}
-  to{transform:translate3d(calc(var(--bubble-x) * .45),calc(var(--bubble-y) * .45 - 20px),0) scale(1.015)}
+  from{transform:translate3d(calc(var(--bubble-x) * .45),calc(var(--bubble-y) * .45 + 18px),0) scale(.985)}
+  to{transform:translate3d(calc(var(--bubble-x) * .45),calc(var(--bubble-y) * .45 - 22px),0) scale(1.018)}
 }
 
 @keyframes heroBubbleDriftB{
-  from{transform:translate3d(calc(var(--bubble-x) * -.7),calc(var(--bubble-y) * -.7 + 12px),0)}
-  to{transform:translate3d(calc(var(--bubble-x) * -.7 + 6px),calc(var(--bubble-y) * -.7 - 16px),0)}
+  from{transform:translate3d(calc(var(--bubble-x) * -.7),calc(var(--bubble-y) * -.7 + 13px),0)}
+  to{transform:translate3d(calc(var(--bubble-x) * -.7 + 7px),calc(var(--bubble-y) * -.7 - 18px),0)}
 }
 
 @media(max-width:700px){
-  .hero::before{opacity:.42}
-  .hero::after{opacity:.32}
+  .hero::before{opacity:.64}
+  .hero::after{opacity:.52}
 }

@@ -1,0 +1,53 @@
+/* Final CTA: a tactile laundromat arrival moment, not a generic banner. */
+.cta{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  min-height:390px;
+  padding:56px 58px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 330px;
+  align-items:center;
+  gap:42px;
+  color:#f8fbff;
+  background:
+    radial-gradient(circle at 16% 18%,rgba(52,102,217,.38),transparent 28%),
+    radial-gradient(circle at 78% 22%,rgba(34,181,157,.16),transparent 24%),
+    linear-gradient(135deg,#0d1b32 0%,#10284a 50%,#0a1526 100%);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 30px 80px rgba(13,23,40,.18),inset 0 1px rgba(255,255,255,.12);
+}
+.cta::before{
+  content:"";position:absolute;inset:0;z-index:-1;opacity:.28;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(255,255,255,.55) 1px,transparent 1.4px);
+  background-size:30px 30px;
+  mask-image:linear-gradient(90deg,#000,transparent 68%);
+}
+.cta-copy{position:relative;z-index:2;max-width:650px}
+.cta-kicker{display:flex;align-items:center;gap:9px;margin-bottom:14px;font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#9fc0ff}
+.cta-kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:#46d6a7;box-shadow:0 0 0 5px rgba(70,214,167,.12)}
+.cta h2{max-width:620px;color:#fff;font-size:clamp(44px,5vw,70px);margin-bottom:16px}
+.cta-copy>p{max-width:540px;color:rgba(240,246,255,.74);font-size:17px;margin-bottom:25px}
+.cta-actions{display:flex;gap:10px;flex-wrap:wrap}
+.cta .btn-blue{background:#fff;color:#10213c;box-shadow:0 8px 28px rgba(0,0,0,.16)}
+.cta .btn-dark{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.17);color:#fff}
+.cta-trust{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.cta-trust span{padding:7px 10px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(255,255,255,.06);color:rgba(241,247,255,.78);font-size:11px;font-weight:700}
+.coin-machine{position:relative;width:280px;height:280px;margin:auto;perspective:800px}
+.coin-box{position:absolute;inset:28px 18px 12px;border-radius:30px;background:linear-gradient(145deg,#e8edf2 0%,#aab5c2 44%,#788594 100%);border:1px solid rgba(255,255,255,.75);box-shadow:inset 8px 8px 18px rgba(255,255,255,.55),inset -12px -12px 24px rgba(22,37,57,.28),0 26px 50px rgba(0,0,0,.28);transform:rotateY(-8deg)}
+.coin-box::before{content:"COIN DROP";position:absolute;top:26px;left:50%;transform:translateX(-50%);font:800 10px Inter,sans-serif;letter-spacing:.16em;color:#344151;white-space:nowrap}
+.coin-slot{position:absolute;z-index:3;left:50%;top:79px;transform:translateX(-50%);width:78px;height:28px;border-radius:9px;background:linear-gradient(#151b23,#3d4752);box-shadow:inset 0 5px 8px #05070a,0 2px 0 rgba(255,255,255,.45)}
+.coin-slot::after{content:"25¢";position:absolute;top:42px;left:50%;transform:translateX(-50%);color:#243143;font:800 22px Manrope,sans-serif;text-shadow:0 1px rgba(255,255,255,.5)}
+.coin-handle{position:absolute;z-index:3;left:50%;bottom:50px;transform:translateX(-50%);width:76px;height:76px;border-radius:50%;background:radial-gradient(circle at 36% 30%,#f5f8fb,#9ba7b3 42%,#53606e 72%,#242d38);border:6px solid #667483;box-shadow:0 8px 14px rgba(0,0,0,.25),inset 0 2px 3px #fff}
+.coin-handle::before{content:"";position:absolute;width:16px;height:52px;left:24px;top:6px;border-radius:8px;background:linear-gradient(90deg,#313b47,#d7dde2,#65717d);box-shadow:0 3px 5px rgba(0,0,0,.3)}
+.coin{position:absolute;z-index:6;top:0;left:50%;width:45px;height:45px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fff7c7 0 8%,#e6c46d 20%,#a87828 68%,#f2d783 82%,#79521a 100%);border:2px solid #e9d184;box-shadow:0 8px 16px rgba(0,0,0,.28),inset 0 0 0 3px rgba(255,255,255,.2);animation:coinDrop 3.6s cubic-bezier(.55,.03,.35,1) infinite}
+.coin::after{content:"25";position:absolute;inset:0;display:grid;place-items:center;color:#805b22;font:800 13px Manrope,sans-serif}
+.coin-spark{position:absolute;z-index:7;left:50%;top:91px;width:92px;height:50px;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(93,208,255,.28),transparent 65%);opacity:0;animation:slotPulse 3.6s ease infinite}
+.arrival-badge{position:absolute;z-index:5;right:-4px;bottom:8px;padding:10px 13px;border-radius:14px;background:#fff;color:#10213c;font-size:11px;font-weight:800;box-shadow:0 12px 30px rgba(0,0,0,.22);animation:badgeFloat 4s ease-in-out infinite}
+.arrival-badge span{color:#168460}
+@keyframes coinDrop{0%,12%{transform:translate(-50%,-14px) rotateY(0);opacity:0}18%{opacity:1}48%{transform:translate(-50%,64px) rotateY(420deg);opacity:1}55%,100%{transform:translate(-50%,78px) rotateY(520deg);opacity:0}}
+@keyframes slotPulse{0%,42%,62%,100%{opacity:0;transform:translateX(-50%) scale(.7)}52%{opacity:1;transform:translateX(-50%) scale(1.25)}}
+@keyframes badgeFloat{50%{transform:translateY(-7px)}}
+@media(max-width:800px){.cta{grid-template-columns:1fr;padding:42px 30px}.coin-machine{width:250px;height:250px}.cta-copy{text-align:left}}
+@media(max-width:520px){.cta{padding:36px 24px}.coin-machine{transform:scale(.88);margin-top:-15px;margin-bottom:-15px}}
+@media(prefers-reduced-motion:reduce){.coin,.coin-spark,.arrival-badge{animation:none}.coin{top:58px;opacity:1}}

@@ -4,6 +4,8 @@
   position:relative;
   isolation:isolate;
   overflow:hidden;
+  --bubble-x:0px;
+  --bubble-y:0px;
   background:
     radial-gradient(circle at 50% 24%, rgba(255,255,255,.22), transparent 34%),
     linear-gradient(180deg,#C5D9EE 0%,#AFCBE6 52%,#B9D1E8 100%);
@@ -54,13 +56,13 @@
 }
 
 @keyframes heroBubbleDriftA{
-  from{transform:translate3d(0,18px,0) scale(.98)}
-  to{transform:translate3d(0,-20px,0) scale(1.015)}
+  from{transform:translate3d(calc(var(--bubble-x) * .45),calc(var(--bubble-y) * .45 + 18px),0) scale(.98)}
+  to{transform:translate3d(calc(var(--bubble-x) * .45),calc(var(--bubble-y) * .45 - 20px),0) scale(1.015)}
 }
 
 @keyframes heroBubbleDriftB{
-  from{transform:translate3d(0,12px,0)}
-  to{transform:translate3d(6px,-16px,0)}
+  from{transform:translate3d(calc(var(--bubble-x) * -.7),calc(var(--bubble-y) * -.7 + 12px),0)}
+  to{transform:translate3d(calc(var(--bubble-x) * -.7 + 6px),calc(var(--bubble-y) * -.7 - 16px),0)}
 }
 
 @media(max-width:700px){

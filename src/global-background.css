@@ -1,0 +1,54 @@
+/* Final global atmosphere override — loaded last on purpose. */
+html,
+body,
+main{
+  background:
+    radial-gradient(circle at 12% 12%,rgba(91,140,255,.12),transparent 24%),
+    radial-gradient(circle at 86% 15%,rgba(143,224,69,.09),transparent 19%),
+    radial-gradient(circle at 20% 52%,rgba(255,255,255,.58),transparent 25%),
+    radial-gradient(circle at 82% 68%,rgba(143,224,200,.08),transparent 22%),
+    linear-gradient(180deg,#F6F8FC 0%,#EEF3FA 52%,#F4F7FA 100%) !important;
+  background-attachment:fixed !important;
+}
+
+/* Remove the white page bands so the global background is actually visible. */
+.hero,
+.marquee,
+#services,
+#amenities,
+.good-to-know,
+.visit-priority,
+#visit,
+#photos,
+#reviews,
+main > section,
+main > .section{
+  background:transparent !important;
+}
+
+#services::before,
+#services::after,
+#amenities::before{
+  background:transparent !important;
+}
+
+/* Keep cards / functional surfaces as cards. */
+.service-visual,
+.service-card,
+.amenity-card,
+.fact,
+.price-list,
+.hours,
+.map-card,
+.review-panel,
+.review-card,
+.cta,
+.hero-fullbleed{
+  background-clip:padding-box;
+}
+
+/* Ticker should feel integrated instead of slicing the page with white. */
+.marquee{
+  border-color:rgba(13,23,40,.08) !important;
+  backdrop-filter:blur(8px);
+}

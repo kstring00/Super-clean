@@ -135,6 +135,70 @@ ${a.items
 </section>`;
 }
 
+const filled = (v) => v !== null && v !== undefined && v !== "" &&
+  !(Array.isArray(v) && v.length === 0);
+
+// Facts the owner has not confirmed yet are null in content.json. Each one is
+// skipped individually, and the whole section disappears if none are set, so a
+// visitor never sees a placeholder.
+function goodToKnow(c) {
+  const rows = [];
+  const add = (label, value) => {
+    if (filled(value)) {
+      rows.push([label, Array.isArray(value) ? value.join(" · ") : value]);
+    }
+  };
+
+  add("Machine sizes", c.machineSizes);
+  add("Payment", c.payment?.methods);
+  add("Wash & fold turnaround", c.washAndFold?.turnaround);
+  add("Drop off by", c.washAndFold?.dropOffCutoff);
+  add("Last wash", c.lastWashTime);
+  add("Wash & fold rate", c.pricing?.washAndFold);
+
+  const priceList = filled(c.pricing?.selfService) ? c.pricing.selfService : [];
+
+  if (rows.length === 0 && priceList.length === 0) return "";
+
+  const factsHtml = rows
+    .map(
+      ([label, value]) => `      <div class="fact">
+        <dt>${esc(label)}</dt>
+        <dd>${esc(value)}</dd>
+      </div>`
+    )
+    .join("\n");
+
+  const pricingHtml = priceList.length
+    ? `
+    <div class="price-list">
+      <h3>Self-service pricing</h3>
+${priceList
+  .map(
+    (p) => `      <div class="price-row">
+        <span>${esc(p.size)}</span>
+        <strong>${esc(p.price)}</strong>
+      </div>`
+  )
+  .join("\n")}
+    </div>`
+    : "";
+
+  return `<section class="section good-to-know" id="good-to-know">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>${esc(c.goodToKnow.heading)}</h2>
+    </div>
+
+    <dl class="facts">
+${factsHtml}
+    </dl>${pricingHtml}
+  </div>
+</section>
+
+`;
+}
+
 // 24-hour number -> "7:00 AM". Must stay in step with fmt() in the client
 // script below, which re-uses the same content values.
 function formatHour(h) {
@@ -365,7 +429,7 @@ ${services(c)}
 
 ${amenities(c)}
 
-${visit(c)}
+${goodToKnow(c)}${visit(c)}
 
 ${gallery(c)}
 

@@ -73,6 +73,41 @@
     ]
   },
 
+  "_unknowns": [
+    "Everything below is UNKNOWN and must not be guessed.",
+    "Each field is null, and a null field renders nothing at all — the section",
+    "it belongs to is skipped, so no visitor ever sees a placeholder.",
+    "Fill a value in and it appears on the next build. Grep for",
+    "TODO_CONFIRM_WITH_OWNER to see what is still outstanding."
+  ],
+
+  "pricing": {
+    "TODO_CONFIRM_WITH_OWNER": "selfService: per-machine price by capacity, e.g. [{\"size\": \"20 lb washer\", \"price\": \"$3.25\"}]. washAndFold: per-pound rate, e.g. \"$1.50 per lb\".",
+    "selfService": null,
+    "washAndFold": null
+  },
+
+  "washAndFold": {
+    "TODO_CONFIRM_WITH_OWNER": "turnaround: same-day or next-day, e.g. \"Same day\". dropOffCutoff: latest drop-off that still makes that turnaround, e.g. \"2:00 PM\".",
+    "turnaround": null,
+    "dropOffCutoff": null
+  },
+
+  "TODO_CONFIRM_WITH_OWNER_lastWashTime": "Latest time the final load can be started before closing. Value is the time only, e.g. \"9:30 PM\" — the page labels it.",
+  "lastWashTime": null,
+
+  "payment": {
+    "TODO_CONFIRM_WITH_OWNER": "A third-party directory lists card-based payment. Confirm whether coins are still accepted, then list every method, e.g. [\"Coins\", \"Debit card\", \"Credit card\"].",
+    "methods": null
+  },
+
+  "TODO_CONFIRM_WITH_OWNER_machineSizes": "Washer capacities available on the floor, e.g. [\"20 lb\", \"40 lb\", \"60 lb\", \"80 lb\"].",
+  "machineSizes": null,
+
+  "goodToKnow": {
+    "heading": "Good to know before you go."
+  },
+
   "amenities": {
     "heading": "What you need, right on site.",
     "items": [

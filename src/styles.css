@@ -349,6 +349,51 @@ h2{
   margin-bottom:0;
 }
 
+.good-to-know{padding-top:0}
+.facts{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:18px;
+  margin:0;
+}
+.fact{
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:24px 28px;
+  background:#fff;
+}
+.fact dt{
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+.fact dd{
+  margin:0;
+  font-family:"Manrope",sans-serif;
+  font-size:22px;
+  letter-spacing:-.02em;
+}
+.price-list{
+  margin-top:18px;
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:28px;
+  background:#fff;
+}
+.price-list h3{font-size:24px;letter-spacing:-.03em;margin-bottom:12px}
+.price-row{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
+  font-size:15px;
+}
+.price-row:last-child{border-bottom:0}
+
 
 .why{
   background:
@@ -693,6 +738,7 @@ footer::after{
   .hero-art{min-height:420px;order:1;padding:24px 24px 0}
   .services{grid-template-columns:1fr}
   .amenities{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr}
   .why-showcase{
   position:relative;
   z-index:1;grid-template-columns:1fr}

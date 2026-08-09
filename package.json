@@ -1,0 +1,10 @@
+{
+  "name": "super-clean-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Static one-page site for Super Clean Washateria (concept design).",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}

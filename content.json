@@ -1,0 +1,182 @@
+{
+  "_readme": [
+    "This file holds every piece of business content on the site.",
+    "Edit the values here, save, and the site rebuilds — no other file needs touching.",
+    "Anything wrapped in an object with \"value\": null is not shown on the site at all."
+  ],
+
+  "business": {
+    "name": "Super Clean Washateria",
+    "shortName": "Super Clean",
+    "city": "Stafford",
+    "state": "Texas",
+    "addressLine1": "802 Texas Pkwy STE H",
+    "addressLine2": "Stafford, TX 77477",
+    "phoneDisplay": "(281) 969-7313",
+    "phoneHref": "tel:+12819697313",
+    "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=802+Texas+Pkwy+STE+H+Stafford+TX+77477",
+    "mapEmbedUrl": "https://www.google.com/maps?q=802+Texas+Pkwy+STE+H,+Stafford,+TX+77477&output=embed"
+  },
+
+  "hours": {
+    "_note": "UNVERIFIED — reference hours pending confirmation with the owner. open/close are 24-hour numbers.",
+    "verified": false,
+    "days": [
+      { "day": "Sunday", "open": 6, "close": 23 },
+      { "day": "Monday", "open": 7, "close": 23 },
+      { "day": "Tuesday", "open": 7, "close": 23 },
+      { "day": "Wednesday", "open": 7, "close": 23 },
+      { "day": "Thursday", "open": 7, "close": 23 },
+      { "day": "Friday", "open": 7, "close": 23 },
+      { "day": "Saturday", "open": 6, "close": 23 }
+    ]
+  },
+
+  "hero": {
+    "eyebrow": "Stafford, Texas",
+    "titleHtml": "Laundry,<br>handled.<br><em>Your way.</em>",
+    "body": "Self-service laundry and wash & fold in Stafford. Simple, dependable laundry service designed around your day.",
+    "statusFallback": "Open daily until 11 PM",
+    "image": "img/hero-attendant.png",
+    "imageAlt": "Friendly laundromat attendant handing folded laundry to a customer inside Super Clean."
+  },
+
+  "ticker": [
+    "Self service",
+    "Wash & fold",
+    "Free Wi-Fi",
+    "Parking",
+    "Open every day",
+    "Friendly staff"
+  ],
+
+  "services": {
+    "heading": "Choose the service that fits your day.",
+    "intro": "Whether you prefer to do it yourself or drop it off, Super Clean makes the next step clear.",
+    "cards": [
+      {
+        "tone": "blue",
+        "mini": "01 · Self service",
+        "heading": "Self-service laundry",
+        "body": "Use the store's self-service washers and dryers and get it done on your schedule.",
+        "ctaLabel": "Get directions",
+        "ctaType": "directions"
+      },
+      {
+        "tone": "sand",
+        "mini": "02 · Wash & fold",
+        "heading": "Wash & fold",
+        "body": "Drop off your laundry and ask the team about wash, dry & fold service. Call for current pricing.",
+        "ctaLabel": "Call about drop-off",
+        "ctaType": "phone"
+      }
+    ]
+  },
+
+  "_unknowns": [
+    "Everything below is UNKNOWN and must not be guessed.",
+    "Each field is null, and a null field renders nothing at all — the section",
+    "it belongs to is skipped, so no visitor ever sees a placeholder.",
+    "Fill a value in and it appears on the next build. Grep for",
+    "TODO_CONFIRM_WITH_OWNER to see what is still outstanding."
+  ],
+
+  "pricing": {
+    "TODO_CONFIRM_WITH_OWNER": "selfService: per-machine price by capacity, e.g. [{\"size\": \"20 lb washer\", \"price\": \"$3.25\"}]. washAndFold: per-pound rate, e.g. \"$1.50 per lb\".",
+    "selfService": null,
+    "washAndFold": null
+  },
+
+  "washAndFold": {
+    "TODO_CONFIRM_WITH_OWNER": "turnaround: same-day or next-day, e.g. \"Same day\". dropOffCutoff: latest drop-off that still makes that turnaround, e.g. \"2:00 PM\".",
+    "turnaround": null,
+    "dropOffCutoff": null
+  },
+
+  "TODO_CONFIRM_WITH_OWNER_lastWashTime": "Latest time the final load can be started before closing. Value is the time only, e.g. \"9:30 PM\" — the page labels it.",
+  "lastWashTime": null,
+
+  "payment": {
+    "TODO_CONFIRM_WITH_OWNER": "A third-party directory lists card-based payment. Confirm whether coins are still accepted, then list every method, e.g. [\"Coins\", \"Debit card\", \"Credit card\"].",
+    "methods": null
+  },
+
+  "TODO_CONFIRM_WITH_OWNER_machineSizes": "Washer capacities available on the floor, e.g. [\"20 lb\", \"40 lb\", \"60 lb\", \"80 lb\"].",
+  "machineSizes": null,
+
+  "goodToKnow": {
+    "heading": "Good to know before you go."
+  },
+
+  "amenities": {
+    "heading": "What you need, right on site.",
+    "items": [
+      { "name": "Free Wi-Fi", "body": "Stay connected while the machines do their thing." },
+      { "name": "Attendant on site", "body": "Staff here to help while you're there." },
+      { "name": "Coin changer", "body": "Change available on site." },
+      { "name": "Parking", "body": "Convenient parking at the store." },
+      { "name": "RV friendly", "body": "Room to pull in with an RV." }
+    ]
+  },
+
+  "visit": {
+    "heading": "Everything you need before you visit.",
+    "intro": "Hours, location, phone, and directions are all easy to find from any device.",
+    "hoursHeading": "Open every day."
+  },
+
+  "gallery": {
+    "heading": "See the space before you arrive.",
+    "intro": "Take a look inside before your first visit.",
+    "main": {
+      "image": "img/laundry-floor.png",
+      "alt": "Interior view of Super Clean Washateria with large front-load washers and a bright open floor.",
+      "label": "Laundry floor"
+    },
+    "stack": [
+      {
+        "image": "img/customer-care-center.png",
+        "alt": "Customer care center and value add center inside Super Clean Washateria.",
+        "label": "Customer care center"
+      },
+      {
+        "image": "img/folding-tables.png",
+        "alt": "Wide view of folding tables and the wash dry fold area at Super Clean Washateria.",
+        "label": "Folding tables"
+      },
+      {
+        "image": "img/kids-corner.png",
+        "alt": "Kids corner with seating and a TV inside Super Clean Washateria.",
+        "label": "Kids corner"
+      }
+    ]
+  },
+
+  "reviews": {
+    "score": "4.7",
+    "count": "29 public reviews",
+    "heading": "A strong local reputation.",
+    "intro": "Customers mention the space, the machines, and how easy the visit is.",
+    "ctaLabel": "Read reviews",
+    "_ctaUrlNote": "Opens the business listing on Google Maps, where the reviews tab lives. If the owner sends the direct share link for their listing, paste it here instead.",
+    "ctaUrl": "https://www.google.com/maps/search/?api=1&query=Super+Clean+Washateria+802+Texas+Pkwy+STE+H+Stafford+TX+77477",
+    "disclaimer": "Summarized from public reviews.",
+    "_quotesNote": "These are summaries of the themes in public reviews, not verbatim quotes. The disclaimer above says so on the page — do not present them as direct quotations.",
+    "quotes": [
+      "Clean facility, bright interior, and machines that make the whole laundry trip feel simple.",
+      "Friendly staff and a helpful environment. The space feels organized and easy to use.",
+      "Spacious layout, folding space, and a smooth experience from walking in to getting laundry done.",
+      "Great place to wash clothes with a modern feel, convenient amenities, and a welcoming atmosphere."
+    ]
+  },
+
+  "cta": {
+    "heading": "Make laundry day simpler."
+  },
+
+  "footer": {
+    "tagline": "Self-service laundry and wash & fold in Stafford, Texas.",
+    "_disclosureNote": "Required. Stays on the page until the business formally engages.",
+    "disclosure": "Independent concept design. Not affiliated with Super Clean Washateria."
+  }
+}

@@ -1,0 +1,76 @@
+/* Header OPEN sign: lit only while the store is within today's posted hours. */
+.header-neon{
+  position:relative;
+  flex:0 0 auto;
+  width:94px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  margin-left:4px;
+  border-radius:12px;
+  background:linear-gradient(180deg,#1a2230 0%,#111823 100%);
+  border:1px solid rgba(13,23,40,.18);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 6px 16px rgba(13,23,40,.10);
+  overflow:hidden;
+  transition:opacity .28s ease,filter .28s ease,box-shadow .28s ease;
+}
+.header-neon::before{
+  content:"";
+  position:absolute;
+  inset:5px 7px;
+  border:1.5px solid currentColor;
+  border-radius:999px;
+  opacity:.18;
+}
+.header-neon span{
+  position:relative;
+  z-index:1;
+  font-family:"Manrope",sans-serif;
+  font-size:15px;
+  font-style:italic;
+  font-weight:800;
+  letter-spacing:.08em;
+  color:#697383;
+  text-shadow:none;
+  transition:color .28s ease,text-shadow .28s ease;
+}
+.header-neon.is-open{
+  color:#62dcff;
+  border-color:rgba(84,215,255,.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    0 0 7px rgba(51,199,255,.28),
+    0 0 17px rgba(224,37,129,.16),
+    0 7px 20px rgba(13,23,40,.11);
+}
+.header-neon.is-open::before{
+  opacity:.85;
+  box-shadow:0 0 5px currentColor,0 0 11px rgba(83,205,255,.45);
+}
+.header-neon.is-open span{
+  color:#ff5aac;
+  text-shadow:
+    0 0 2px #fff,
+    0 0 5px rgba(255,82,169,.95),
+    0 0 10px rgba(255,34,143,.72);
+  animation:headerNeonHum 4.7s ease-in-out infinite;
+}
+.header-neon.is-off{
+  opacity:.72;
+  filter:saturate(.25);
+}
+@keyframes headerNeonHum{
+  0%,44%,48%,100%{opacity:1}
+  46%{opacity:.88}
+  47%{opacity:.98}
+}
+@media(max-width:900px){
+  .header-neon{width:82px;height:35px}
+  .header-neon span{font-size:13px}
+}
+@media(max-width:760px){
+  .header-neon{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .header-neon.is-open span{animation:none}
+}

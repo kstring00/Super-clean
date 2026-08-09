@@ -26,7 +26,6 @@ try {
 const css = [
   readFileSync(join(root, "src", "styles.css"), "utf8"),
   readFileSync(join(root, "src", "hero-bubbles.css"), "utf8"),
-  readFileSync(join(root, "src", "neon-wave.css"), "utf8"),
   readFileSync(join(root, "src", "footer-machines.css"), "utf8"),
   readFileSync(join(root, "src", "coin-cta.css"), "utf8"),
 ].join("\n\n");

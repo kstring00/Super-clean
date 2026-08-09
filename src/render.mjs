@@ -37,6 +37,9 @@ function header(c) {
       <a href="#reviews">Reviews</a>
       <a href="#visit">Visit</a>
     </nav>
+    <div class="header-neon is-off" id="headerOpenSign" role="status" aria-label="Store hours status">
+      <span>OPEN</span>
+    </div>
     <a class="nav-btn" href="${attr(c.business.phoneHref)}">Call now</a>
   </div>
 </header>`;
@@ -72,7 +75,6 @@ function hero(c) {
 }
 
 function ticker(c) {
-  // The visible track is duplicated so the CSS loop can translate -50% seamlessly.
   const group = [...c.ticker, ...c.ticker]
     .map((t) => `<span>${esc(t)}</span><span>•</span>`)
     .join("");
@@ -138,9 +140,6 @@ ${a.items
 const filled = (v) => v !== null && v !== undefined && v !== "" &&
   !(Array.isArray(v) && v.length === 0);
 
-// Facts the owner has not confirmed yet are null in content.json. Each one is
-// skipped individually, and the whole section disappears if none are set, so a
-// visitor never sees a placeholder.
 function goodToKnow(c) {
   const rows = [];
   const add = (label, value) => {
@@ -199,8 +198,6 @@ ${factsHtml}
 `;
 }
 
-// 24-hour number -> "7:00 AM". Must stay in step with fmt() in the client
-// script below, which re-uses the same content values.
 function formatHour(h) {
   const hour = Math.floor(h);
   const minutes = Math.round((h - hour) * 60);
@@ -209,8 +206,6 @@ function formatHour(h) {
   return `${hour % 12 || 12}:${mm} ${meridiem}`;
 }
 
-// Rendered at build time so the hours are in the served HTML, not injected by
-// script. The client only adds the "today" highlight on top of this.
 function hoursRows(c) {
   return c.hours.days
     .map(
@@ -235,10 +230,6 @@ function visit(c) {
       <div class="hours">
         <h3 style="font-size:32px">${esc(c.visit.hoursHeading)}</h3>
         <p style="color:var(--muted)">${esc(b.addressLine1)}<br>${esc(b.addressLine2)}<br><a href="${attr(b.phoneHref)}">${esc(b.phoneDisplay)}</a></p>
-        <!-- TODO_CONFIRM_WITH_OWNER: opening hours below are UNVERIFIED reference
-             values taken from a third-party directory listing, not from the owner.
-             Confirm in person, then correct content.json > hours.days and set
-             hours.verified to true. -->
         <div class="hours-list" id="hoursList">
 ${hoursRows(c)}
         </div>
@@ -365,9 +356,6 @@ function script(c) {
   const hours = c.hours.days.map((d) => ({ open: d.open, close: d.close }));
   const days = c.hours.days.map((d) => d.day);
   return `<script>
-// Progressive enhancement only. The hours table is already in the HTML; this
-// adds the open/closed pill and highlights whichever row is today on the
-// visitor's own clock.
 (function(){
   var HOURS=${JSON.stringify(hours)};
   var DAYS=${JSON.stringify(days)};
@@ -383,6 +371,14 @@ function script(c) {
     var d=now.getDay();
     var t=now.getHours()+now.getMinutes()/60;
     var span=HOURS[d];
+    var isOpen=!!(span&&t>=span.open&&t<span.close);
+
+    var sign=document.getElementById("headerOpenSign");
+    if(sign){
+      sign.classList.toggle("is-open",isOpen);
+      sign.classList.toggle("is-off",!isOpen);
+      sign.setAttribute("aria-label",isOpen?"Open now":"Currently closed");
+    }
 
     var status=document.getElementById("heroStatus");
     if(status&&span){
@@ -431,11 +427,6 @@ function script(c) {
     });
   }
 
-  // The map is a cross-origin iframe. Tabbing to it makes it activeElement but
-  // Chromium fires no focus event on it and it matches none of :focus,
-  // :focus-visible or :focus-within, so no selector reaches it. Check
-  // activeElement after each Tab instead. Keyboard only, matching
-  // :focus-visible. Verified in headless Chromium.
   var mapCard=document.querySelector(".map-card");
   var frame=mapCard&&mapCard.querySelector("iframe");
   if(frame){

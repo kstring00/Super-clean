@@ -112,7 +112,10 @@
     "heading": "A strong local reputation.",
     "intro": "Customers mention the space, the machines, and how easy the visit is.",
     "ctaLabel": "Read reviews",
-    "ctaUrl": "https://www.google.com/maps/search/?api=1&query=Super+Clean+Washateria+802+Texas+Pkwy+Stafford+TX",
+    "_ctaUrlNote": "Opens the business listing on Google Maps, where the reviews tab lives. If the owner sends the direct share link for their listing, paste it here instead.",
+    "ctaUrl": "https://www.google.com/maps/search/?api=1&query=Super+Clean+Washateria+802+Texas+Pkwy+STE+H+Stafford+TX+77477",
+    "disclaimer": "Summarized from public reviews.",
+    "_quotesNote": "These are summaries of the themes in public reviews, not verbatim quotes. The disclaimer above says so on the page — do not present them as direct quotations.",
     "quotes": [
       "Clean facility, bright interior, and machines that make the whole laundry trip feel simple.",
       "Friendly staff and a helpful environment. The space feels organized and easy to use.",

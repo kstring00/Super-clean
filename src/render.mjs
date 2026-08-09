@@ -166,20 +166,16 @@ ${g.stack
 </section>`;
 }
 
-function reviewCard(quote, hidden) {
-  return `          <article class="review-card"${hidden ? ' aria-hidden="true"' : ""}>
-            <div class="mini-stars">★★★★★</div>
-            <p>${esc(quote)}</p>
-            <span>Review highlight</span>
-          </article>`;
+function reviewCard(quote) {
+  return `        <article class="review-card">
+          <div class="mini-stars">★★★★★</div>
+          <p>${esc(quote)}</p>
+          <span>Review highlight</span>
+        </article>`;
 }
 
 function reviews(c) {
   const r = c.reviews;
-  const cards = [
-    ...r.quotes.map((q) => reviewCard(q, false)),
-    ...r.quotes.map((q) => reviewCard(q, true)),
-  ].join("\n");
   return `<section class="section" id="reviews">
   <div class="wrap">
     <div class="review-panel">
@@ -194,11 +190,10 @@ function reviews(c) {
         <a class="btn btn-dark" href="${attr(r.ctaUrl)}" target="_blank" rel="noopener">${esc(r.ctaLabel)}</a>
       </div>
 
-      <div class="review-carousel" aria-label="Rolling review highlights">
-        <div class="review-track">
-${cards}
-        </div>
+      <div class="review-grid">
+${r.quotes.map((q) => reviewCard(q)).join("\n")}
       </div>
+      <p class="review-source">${esc(r.disclaimer)}</p>
     </div>
   </div>
 </section>`;

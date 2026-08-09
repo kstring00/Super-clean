@@ -115,7 +115,7 @@ ${c.services.cards.map((card) => serviceCard(c, card)).join("\n\n")}
 
 function amenities(c) {
   const a = c.amenities;
-  return `<section class="section amenities-section" id="amenities">
+  return `<section class="section" id="amenities">
   <div class="wrap">
     <div class="section-title">
       <h2>${esc(a.heading)}</h2>
@@ -405,6 +405,25 @@ function script(c) {
 
   update();
   setInterval(update,60000);
+
+  // The map is a cross-origin iframe. Tabbing to it makes it activeElement but
+  // Chromium fires no focus event on it and it matches none of :focus,
+  // :focus-visible or :focus-within, so no selector reaches it. Check
+  // activeElement after each Tab instead. Keyboard only, matching
+  // :focus-visible. Verified in headless Chromium.
+  var mapCard=document.querySelector(".map-card");
+  var frame=mapCard&&mapCard.querySelector("iframe");
+  if(frame){
+    document.addEventListener("keydown",function(e){
+      if(e.key!=="Tab") return;
+      setTimeout(function(){
+        mapCard.classList.toggle("is-focused",document.activeElement===frame);
+      },0);
+    },true);
+    document.addEventListener("pointerdown",function(){
+      mapCard.classList.remove("is-focused");
+    },true);
+  }
 })();
 <\/script>`;
 }

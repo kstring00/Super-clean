@@ -87,10 +87,8 @@ function ticker(c) {
 }
 
 function serviceCard(c, card) {
-  const href =
-    card.ctaType === "phone" ? c.business.phoneHref : c.business.directionsUrl;
-  const target =
-    card.ctaType === "phone" ? "" : ' target="_blank" rel="noopener"';
+  const href = card.ctaType === "phone" ? c.business.phoneHref : c.business.directionsUrl;
+  const target = card.ctaType === "phone" ? "" : ' target="_blank" rel="noopener"';
   return `      <article class="service-card ${attr(card.tone)}">
         <div class="mini">${esc(card.mini)}</div>
         <h3>${esc(card.heading)}</h3>
@@ -109,7 +107,49 @@ function services(c) {
     </div>
 
     <div class="services">
+      <div class="service-visual">
+        <div class="clean-stage" aria-hidden="true">
+          <span class="glass-orb orb-a"></span>
+          <span class="glass-orb orb-b"></span>
+          <span class="glass-orb orb-c"></span>
+          <span class="glass-orb orb-d"></span>
+          <span class="clean-pill">Fresh cycle</span>
+
+          <div class="washer-unit">
+            <div class="washer-body"></div>
+            <div class="washer-panel">
+              <div class="washer-screen"><div class="washer-progress"></div></div>
+              <div class="washer-knob"></div>
+            </div>
+            <div class="washer-door">
+              <div class="clothes-spin">
+                <span class="cloth one"></span>
+                <span class="cloth two"></span>
+                <span class="cloth three"></span>
+                <span class="cloth four"></span>
+              </div>
+              <div class="washer-water"></div>
+            </div>
+          </div>
+
+          <span class="bubble b1"></span>
+          <span class="bubble b2"></span>
+          <span class="bubble b3"></span>
+          <span class="bubble b4"></span>
+          <span class="sparkle s1"></span>
+          <span class="sparkle s2"></span>
+          <span class="sparkle s3"></span>
+        </div>
+
+        <div class="service-visual-copy">
+          <h3>Fresh clothes.<br>Cleaner day.</h3>
+          <p>Watch the cycle move while you choose the laundry option that fits your day.</p>
+        </div>
+      </div>
+
+      <div class="service-options">
 ${c.services.cards.map((card) => serviceCard(c, card)).join("\n\n")}
+      </div>
     </div>
   </div>
 </section>`;
@@ -124,29 +164,20 @@ function amenities(c) {
     </div>
 
     <div class="amenities">
-${a.items
-  .map(
-    (item) => `      <div class="amenity-card">
+${a.items.map((item) => `      <div class="amenity-card">
         <h3>${esc(item.name)}</h3>
         <p>${esc(item.body)}</p>
-      </div>`
-  )
-  .join("\n")}
+      </div>`).join("\n")}
     </div>
   </div>
 </section>`;
 }
 
-const filled = (v) => v !== null && v !== undefined && v !== "" &&
-  !(Array.isArray(v) && v.length === 0);
+const filled = (v) => v !== null && v !== undefined && v !== "" && !(Array.isArray(v) && v.length === 0);
 
 function goodToKnow(c) {
   const rows = [];
-  const add = (label, value) => {
-    if (filled(value)) {
-      rows.push([label, Array.isArray(value) ? value.join(" · ") : value]);
-    }
-  };
+  const add = (label, value) => { if (filled(value)) rows.push([label, Array.isArray(value) ? value.join(" · ") : value]); };
 
   add("Machine sizes", c.machineSizes);
   add("Payment", c.payment?.methods);
@@ -156,46 +187,28 @@ function goodToKnow(c) {
   add("Wash & fold rate", c.pricing?.washAndFold);
 
   const priceList = filled(c.pricing?.selfService) ? c.pricing.selfService : [];
-
   if (rows.length === 0 && priceList.length === 0) return "";
 
-  const factsHtml = rows
-    .map(
-      ([label, value]) => `      <div class="fact">
+  const factsHtml = rows.map(([label, value]) => `      <div class="fact">
         <dt>${esc(label)}</dt>
         <dd>${esc(value)}</dd>
-      </div>`
-    )
-    .join("\n");
+      </div>`).join("\n");
 
-  const pricingHtml = priceList.length
-    ? `
+  const pricingHtml = priceList.length ? `
     <div class="price-list">
       <h3>Self-service pricing</h3>
-${priceList
-  .map(
-    (p) => `      <div class="price-row">
+${priceList.map((p) => `      <div class="price-row">
         <span>${esc(p.size)}</span>
         <strong>${esc(p.price)}</strong>
-      </div>`
-  )
-  .join("\n")}
-    </div>`
-    : "";
+      </div>`).join("\n")}
+    </div>` : "";
 
   return `<section class="section good-to-know" id="good-to-know">
   <div class="wrap">
-    <div class="section-title">
-      <h2>${esc(c.goodToKnow.heading)}</h2>
-    </div>
-
-    <dl class="facts">
-${factsHtml}
-    </dl>${pricingHtml}
+    <div class="section-title"><h2>${esc(c.goodToKnow.heading)}</h2></div>
+    <dl class="facts">${factsHtml}</dl>${pricingHtml}
   </div>
-</section>
-
-`;
+</section>\n\n`;
 }
 
 function formatHour(h) {
@@ -207,14 +220,10 @@ function formatHour(h) {
 }
 
 function hoursRows(c) {
-  return c.hours.days
-    .map(
-      (d, i) => `          <div class="hr-row" data-day="${i}">
+  return c.hours.days.map((d, i) => `          <div class="hr-row" data-day="${i}">
             <span>${esc(d.day)}<span class="hr-today" hidden> · Today</span></span>
             <strong>${esc(formatHour(d.open))} – ${esc(formatHour(d.close))}</strong>
-          </div>`
-    )
-    .join("\n");
+          </div>`).join("\n");
 }
 
 function visit(c) {
@@ -225,18 +234,13 @@ function visit(c) {
       <h2>${esc(c.visit.heading)}</h2>
       <p>${esc(c.visit.intro)}</p>
     </div>
-
     <div class="info-grid">
       <div class="hours">
         <h3 style="font-size:32px">${esc(c.visit.hoursHeading)}</h3>
         <p style="color:var(--muted)">${esc(b.addressLine1)}<br>${esc(b.addressLine2)}<br><a href="${attr(b.phoneHref)}">${esc(b.phoneDisplay)}</a></p>
-        <div class="hours-list" id="hoursList">
-${hoursRows(c)}
-        </div>
+        <div class="hours-list" id="hoursList">${hoursRows(c)}</div>
       </div>
-      <div class="map-card">
-        <iframe title="Map to ${attr(b.name)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="${attr(b.mapEmbedUrl)}"></iframe>
-      </div>
+      <div class="map-card"><iframe title="Map to ${attr(b.name)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="${attr(b.mapEmbedUrl)}"></iframe></div>
     </div>
   </div>
 </section>`;
@@ -247,25 +251,14 @@ function gallery(c) {
   const areas = ["stack-top", "stack-left", "stack-right"];
   return `<section class="section" id="photos">
   <div class="wrap">
-    <div class="section-title">
-      <h2>${esc(g.heading)}</h2>
-      <p>${esc(g.intro)}</p>
-    </div>
-
+    <div class="section-title"><h2>${esc(g.heading)}</h2><p>${esc(g.intro)}</p></div>
     <div class="photos">
-      <div class="photo-main">
-        <img src="${attr(g.main.image)}" alt="${attr(g.main.alt)}">
-        <span class="photo-label">${esc(g.main.label)}</span>
-      </div>
+      <div class="photo-main"><img src="${attr(g.main.image)}" alt="${attr(g.main.alt)}"><span class="photo-label">${esc(g.main.label)}</span></div>
       <div class="photo-stack">
-${g.stack
-  .map(
-    (p, i) => `        <div class="${areas[i]}">
+${g.stack.map((p, i) => `        <div class="${areas[i]}">
           <img src="${attr(p.image)}" alt="${attr(p.alt)}" loading="lazy">
           <span class="photo-label">${esc(p.label)}</span>
-        </div>`
-  )
-  .join("\n")}
+        </div>`).join("\n")}
       </div>
     </div>
   </div>
@@ -285,20 +278,13 @@ function reviews(c) {
   return `<section class="section" id="reviews">
   <div class="wrap">
     <div class="review-panel">
-      <div>
-        <div class="score">${esc(r.score)}</div>
-        <div class="stars">★★★★★</div>
-        <div class="review-note">${esc(r.count)}</div>
-      </div>
+      <div><div class="score">${esc(r.score)}</div><div class="stars">★★★★★</div><div class="review-note">${esc(r.count)}</div></div>
       <div class="review-copy">
         <h2>${esc(r.heading)}</h2>
         <p>${esc(r.intro)}</p>
         <a class="btn btn-dark" href="${attr(r.ctaUrl)}" target="_blank" rel="noopener">${esc(r.ctaLabel)}</a>
       </div>
-
-      <div class="review-grid">
-${r.quotes.map((q) => reviewCard(q)).join("\n")}
-      </div>
+      <div class="review-grid">${r.quotes.map((q) => reviewCard(q)).join("\n")}</div>
       <p class="review-source">${esc(r.disclaimer)}</p>
     </div>
   </div>
@@ -323,25 +309,11 @@ function footer(c) {
   const b = c.business;
   return `<footer>
   <div class="wrap foot">
-    <div>
-      <div class="logo">SUPER <span>CLEAN</span></div>
-      <p style="margin-top:12px;color:rgba(235,241,255,.80)">${esc(c.footer.tagline)}</p>
-    </div>
-    <div>
-      <strong>Visit</strong>
-      <p>${esc(b.addressLine1)}<br>${esc(b.addressLine2)}</p>
-      <a href="${attr(b.phoneHref)}">${esc(b.phoneDisplay)}</a>
-    </div>
-    <div>
-      <strong>Quick links</strong>
-      <a href="#services">Services</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#visit">Hours &amp; directions</a>
-    </div>
+    <div><div class="logo">SUPER <span>CLEAN</span></div><p style="margin-top:12px;color:rgba(235,241,255,.80)">${esc(c.footer.tagline)}</p></div>
+    <div><strong>Visit</strong><p>${esc(b.addressLine1)}<br>${esc(b.addressLine2)}</p><a href="${attr(b.phoneHref)}">${esc(b.phoneDisplay)}</a></div>
+    <div><strong>Quick links</strong><a href="#services">Services</a><a href="#reviews">Reviews</a><a href="#visit">Hours &amp; directions</a></div>
   </div>
-  <div class="wrap">
-    <p class="foot-disclosure">${esc(c.footer.disclosure)}</p>
-  </div>
+  <div class="wrap"><p class="foot-disclosure">${esc(c.footer.disclosure)}</p></div>
 </footer>`;
 }
 
@@ -360,86 +332,22 @@ function script(c) {
   var HOURS=${JSON.stringify(hours)};
   var DAYS=${JSON.stringify(days)};
 
-  function fmt(h){
-    var hour=Math.floor(h);
-    var mm=String(Math.round((h-hour)*60)).padStart(2,"0");
-    return (hour%12||12)+":"+mm+" "+(hour>=12?"PM":"AM");
-  }
+  function fmt(h){var hour=Math.floor(h);var mm=String(Math.round((h-hour)*60)).padStart(2,"0");return (hour%12||12)+":"+mm+" "+(hour>=12?"PM":"AM");}
 
   function update(){
-    var now=new Date();
-    var d=now.getDay();
-    var t=now.getHours()+now.getMinutes()/60;
-    var span=HOURS[d];
-    var isOpen=!!(span&&t>=span.open&&t<span.close);
-
+    var now=new Date();var d=now.getDay();var t=now.getHours()+now.getMinutes()/60;var span=HOURS[d];var isOpen=!!(span&&t>=span.open&&t<span.close);
     var sign=document.getElementById("headerOpenSign");
-    if(sign){
-      sign.classList.toggle("is-open",isOpen);
-      sign.classList.toggle("is-off",!isOpen);
-      sign.setAttribute("aria-label",isOpen?"Open now":"Currently closed");
-    }
-
+    if(sign){sign.classList.toggle("is-open",isOpen);sign.classList.toggle("is-off",!isOpen);sign.setAttribute("aria-label",isOpen?"Open now":"Currently closed");}
     var status=document.getElementById("heroStatus");
-    if(status&&span){
-      if(t<span.open) status.textContent="Closed · opens "+fmt(span.open);
-      else if(t<span.close) status.textContent="Open now · until "+fmt(span.close);
-      else {
-        var nd=(d+1)%7;
-        status.textContent="Closed · opens "+fmt(HOURS[nd].open)+" "+DAYS[nd];
-      }
-    }
-
+    if(status&&span){if(t<span.open) status.textContent="Closed · opens "+fmt(span.open);else if(t<span.close) status.textContent="Open now · until "+fmt(span.close);else {var nd=(d+1)%7;status.textContent="Closed · opens "+fmt(HOURS[nd].open)+" "+DAYS[nd];}}
     var rows=document.querySelectorAll("#hoursList .hr-row");
-    for(var i=0;i<rows.length;i++){
-      var isToday=Number(rows[i].getAttribute("data-day"))===d;
-      rows[i].classList.toggle("today",isToday);
-      var tag=rows[i].querySelector(".hr-today");
-      if(tag) tag.hidden=!isToday;
-    }
+    for(var i=0;i<rows.length;i++){var isToday=Number(rows[i].getAttribute("data-day"))===d;rows[i].classList.toggle("today",isToday);var tag=rows[i].querySelector(".hr-today");if(tag) tag.hidden=!isToday;}
   }
 
-  update();
-  setInterval(update,60000);
+  update();setInterval(update,60000);
 
-  var hero=document.querySelector(".hero");
-  if(hero&&window.matchMedia("(pointer:fine)").matches){
-    var tx=0,ty=0,cx=0,cy=0,raf=0;
-    function draw(){
-      cx+=(tx-cx)*.12;
-      cy+=(ty-cy)*.12;
-      hero.style.setProperty("--bubble-x",cx.toFixed(2)+"px");
-      hero.style.setProperty("--bubble-y",cy.toFixed(2)+"px");
-      if(Math.abs(tx-cx)>.15||Math.abs(ty-cy)>.15) raf=requestAnimationFrame(draw);
-      else raf=0;
-    }
-    hero.addEventListener("pointermove",function(e){
-      var r=hero.getBoundingClientRect();
-      var nx=(e.clientX-r.left)/r.width-.5;
-      var ny=(e.clientY-r.top)/r.height-.5;
-      tx=nx*42;
-      ty=ny*30;
-      if(!raf) raf=requestAnimationFrame(draw);
-    });
-    hero.addEventListener("pointerleave",function(){
-      tx=0;ty=0;
-      if(!raf) raf=requestAnimationFrame(draw);
-    });
-  }
-
-  var mapCard=document.querySelector(".map-card");
-  var frame=mapCard&&mapCard.querySelector("iframe");
-  if(frame){
-    document.addEventListener("keydown",function(e){
-      if(e.key!=="Tab") return;
-      setTimeout(function(){
-        mapCard.classList.toggle("is-focused",document.activeElement===frame);
-      },0);
-    },true);
-    document.addEventListener("pointerdown",function(){
-      mapCard.classList.remove("is-focused");
-    },true);
-  }
+  var mapCard=document.querySelector(".map-card");var frame=mapCard&&mapCard.querySelector("iframe");
+  if(frame){document.addEventListener("keydown",function(e){if(e.key!=="Tab") return;setTimeout(function(){mapCard.classList.toggle("is-focused",document.activeElement===frame);},0);},true);document.addEventListener("pointerdown",function(){mapCard.classList.remove("is-focused");},true);}
 })();
 <\/script>`;
 }
@@ -452,36 +360,20 @@ export function renderPage(content, css) {
 ${head(c, css)}
 </head>
 <body>
-
 ${header(c)}
-
 <main id="top">
-
 ${hero(c)}
-
 ${ticker(c)}
-
 ${services(c)}
-
 ${amenities(c)}
-
 ${goodToKnow(c)}${visit(c)}
-
 ${gallery(c)}
-
 ${reviews(c)}
-
 ${cta(c)}
-
 </main>
-
 ${footer(c)}
-
 ${mobileBar(c)}
-
 ${script(c)}
-
 </body>
-</html>
-`;
+</html>`;
 }

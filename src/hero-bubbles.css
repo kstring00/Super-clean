@@ -1,0 +1,69 @@
+/* Hero atmosphere: blue wash + subtle floating soap bubbles.
+   This only decorates the space around the existing hero card. */
+.hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 24%, rgba(255,255,255,.22), transparent 34%),
+    linear-gradient(180deg,#C5D9EE 0%,#AFCBE6 52%,#B9D1E8 100%);
+}
+
+.hero > .wrap{
+  position:relative;
+  z-index:2;
+}
+
+.hero::before,
+.hero::after{
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:-18% -5%;
+  pointer-events:none;
+  background-repeat:no-repeat;
+  will-change:transform,opacity;
+}
+
+/* Larger, slower bubbles. Each radial gradient is a transparent CSS bubble,
+   so there are no added image assets. */
+.hero::before{
+  opacity:.62;
+  background-image:
+    radial-gradient(circle at 8% 75%, transparent 0 32px, rgba(255,255,255,.34) 33px 35px, rgba(255,255,255,.08) 36px 42px, transparent 43px),
+    radial-gradient(circle at 14% 24%, transparent 0 24px, rgba(255,255,255,.34) 25px 27px, rgba(255,255,255,.08) 28px 33px, transparent 34px),
+    radial-gradient(circle at 91% 20%, transparent 0 34px, rgba(255,255,255,.36) 35px 37px, rgba(255,255,255,.08) 38px 44px, transparent 45px),
+    radial-gradient(circle at 88% 77%, transparent 0 28px, rgba(255,255,255,.32) 29px 31px, rgba(255,255,255,.07) 32px 38px, transparent 39px),
+    radial-gradient(circle at 4% 38%, transparent 0 13px, rgba(255,255,255,.30) 14px 15px, rgba(255,255,255,.07) 16px 19px, transparent 20px),
+    radial-gradient(circle at 96% 48%, transparent 0 15px, rgba(255,255,255,.30) 16px 17px, rgba(255,255,255,.07) 18px 21px, transparent 22px);
+  animation:heroBubbleDriftA 12s ease-in-out infinite alternate;
+}
+
+/* Smaller bubbles move on a different rhythm so the background feels alive
+   without becoming distracting. */
+.hero::after{
+  opacity:.45;
+  background-image:
+    radial-gradient(circle at 18% 84%, transparent 0 9px, rgba(255,255,255,.45) 10px 11px, transparent 12px),
+    radial-gradient(circle at 23% 35%, transparent 0 7px, rgba(255,255,255,.42) 8px 9px, transparent 10px),
+    radial-gradient(circle at 78% 14%, transparent 0 8px, rgba(255,255,255,.40) 9px 10px, transparent 11px),
+    radial-gradient(circle at 82% 88%, transparent 0 11px, rgba(255,255,255,.42) 12px 13px, transparent 14px),
+    radial-gradient(circle at 94% 62%, transparent 0 6px, rgba(255,255,255,.40) 7px 8px, transparent 9px),
+    radial-gradient(circle at 6% 58%, transparent 0 7px, rgba(255,255,255,.40) 8px 9px, transparent 10px);
+  animation:heroBubbleDriftB 8s ease-in-out infinite alternate;
+}
+
+@keyframes heroBubbleDriftA{
+  from{transform:translate3d(0,18px,0) scale(.98)}
+  to{transform:translate3d(0,-20px,0) scale(1.015)}
+}
+
+@keyframes heroBubbleDriftB{
+  from{transform:translate3d(0,12px,0)}
+  to{transform:translate3d(6px,-16px,0)}
+}
+
+@media(max-width:700px){
+  .hero::before{opacity:.42}
+  .hero::after{opacity:.32}
+}

@@ -31,12 +31,14 @@ const css = [
   readFileSync(join(root, "src", "section-blend.css"), "utf8"),
   readFileSync(join(root, "src", "header-neon.css"), "utf8"),
   readFileSync(join(root, "src", "global-background.css"), "utf8"),
+  readFileSync(join(root, "src", "hero-redesign.css"), "utf8"),
 ].join("\n\n");
 
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });
 
 cpSync(join(root, "assets", "img"), join(dist, "img"), { recursive: true });
+cpSync(join(root, "assets"), join(dist, "assets"), { recursive: true });
 
 const html = renderPage(content, css);
 writeFileSync(join(dist, "index.html"), html, "utf8");

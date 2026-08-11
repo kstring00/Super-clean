@@ -32,13 +32,15 @@ const css = [
   readFileSync(join(root, "src", "header-neon.css"), "utf8"),
   readFileSync(join(root, "src", "global-background.css"), "utf8"),
   readFileSync(join(root, "src", "hero-redesign.css"), "utf8"),
+  readFileSync(join(root, "src", "hero-common-ground.css"), "utf8"),
 ].join("\n\n");
 
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });
 
 cpSync(join(root, "assets", "img"), join(dist, "img"), { recursive: true });
-cpSync(join(root, "assets"), join(dist, "assets"), { recursive: true });
+mkdirSync(join(dist, "assets"), { recursive: true });
+cpSync(join(root, "assets", "super-clean-hero.jpg"), join(dist, "assets", "super-clean-hero.jpg"));
 
 const html = renderPage(content, css);
 writeFileSync(join(dist, "index.html"), html, "utf8");

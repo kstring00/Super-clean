@@ -37,8 +37,8 @@
     "titleHtml": "Laundry,<br>handled.<br><em>Your way.</em>",
     "body": "Self-service laundry and wash & fold in Stafford. Simple, dependable laundry service designed around your day.",
     "statusFallback": "Open daily until 11 PM",
-    "image": "img/hero-attendant.png",
-    "imageAlt": "Friendly laundromat attendant handing folded laundry to a customer inside Super Clean."
+    "image": "assets/super-clean-hero.jpg",
+    "imageAlt": "Super Clean Washateria storefront sign with self-service laundry, wash and fold, daily hours, and free Wi-Fi."
   },
 
   "ticker": [

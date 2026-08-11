@@ -40,7 +40,18 @@ mkdirSync(dist, { recursive: true });
 
 cpSync(join(root, "assets", "img"), join(dist, "img"), { recursive: true });
 mkdirSync(join(dist, "assets"), { recursive: true });
-cpSync(join(root, "assets", "super-clean-hero.jpg"), join(dist, "assets", "super-clean-hero.jpg"));
+
+// Rebuild the exact storefront hero from text chunks committed in GitHub.
+// This avoids binary corruption through the connector and guarantees the
+// deployed file is the intended storefront artwork.
+const heroBase64 = [
+  "part01.txt", "part02.txt", "part03.txt", "part04.txt",
+  "part05.txt", "part06.txt", "part07.txt", "part08.txt",
+].map((name) => readFileSync(join(root, "assets", "hero-b64", name), "utf8").trim()).join("");
+writeFileSync(
+  join(dist, "assets", "super-clean-hero.jpg"),
+  Buffer.from(heroBase64, "base64")
+);
 
 const html = renderPage(content, css);
 writeFileSync(join(dist, "index.html"), html, "utf8");
